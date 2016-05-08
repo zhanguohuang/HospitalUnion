@@ -3,6 +3,6 @@ package zhoudi;
 public class Hello 
 {
 	public static void main(String[] args) {
-		System.out.println("hhhhhhhhhhhhh");
+		System.out.println("hello world");
 	}
 }
