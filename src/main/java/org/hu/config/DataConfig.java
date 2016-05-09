@@ -1,4 +1,4 @@
-package org.hu.cofig;
+package org.hu.config;
 
 public class DataConfig {
 
