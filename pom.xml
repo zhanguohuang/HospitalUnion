@@ -10,7 +10,44 @@
 
   <dependencies>
   <!-- spring -->
-  
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-core</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-context</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-webmvc</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-beans</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  	<dependency>
+  		<groupId>org.springframework</groupId>
+  		<artifactId>spring-tx</artifactId>
+  		<version>4.2.0.RELEASE</version>
+  	</dependency>
+  <!-- jsp -->
+  	<dependency>
+  		<groupId>jstl</groupId>
+  		<artifactId>jstl</artifactId>
+  		<version>1.2</version>
+  	</dependency>	
+  <!-- mysql -->
+  	<dependency>
+  		<groupId>mysql</groupId>
+  		<artifactId>mysql-connector-java</artifactId>
+  		<version>5.1.38</version>
+  	</dependency>	
+  <!-- test -->	
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
