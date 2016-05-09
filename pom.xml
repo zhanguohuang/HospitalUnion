@@ -10,11 +10,7 @@
 
   <dependencies>
   <!-- spring -->
-    <dependency>
-  		<groupId>org.springframework</groupId>
-  		<artifactId>spring-core</artifactId>
-  		<version>4.2.0.RELEASE</version>
-  	</dependency>
+   
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
