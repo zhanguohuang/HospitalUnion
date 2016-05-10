@@ -19,5 +19,6 @@
 			</tr>
 		</table>
 	</c:forEach>
+	<a href="/HospitalUnion">返回首页</a>
 </body>
 </html>
