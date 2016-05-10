@@ -15,7 +15,7 @@ public class DataConfig {
 	public DataSource dataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setUrl("jdbc:mysql://localhost:3306/test");
-		dataSource.setDriverClassName("com.mysql.jdbc.driver");
+		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("root");
 		dataSource.setPassword("mysqladmin");
 		dataSource.setInitialSize(20);

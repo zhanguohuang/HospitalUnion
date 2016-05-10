@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.2//EN"   
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper	namespace="org.hu.data.dao.UserDao">
+	<select id="getUser" parameterType="org.hu.data.model.User" resultType="org.hu.data.model.User">
+		select * from user where username=#{username} and password=#{password}		
+	</select>
+	<insert id="addUser" parameterType="org.hu.data.model.User" flushCache="true">
+		insert into user(id, username, password) values (#{id}, #{username}, #{password})
+	</insert>
+	<update id="updateUser" parameterType="org.hu.data.model.User">
+		update user set password=#{password} where id=#{id}
+	</update>
+	<delete id="deleteUser" parameterType="int">
+		delete from user where id=#{id}
+	</delete>
+</mapper>
