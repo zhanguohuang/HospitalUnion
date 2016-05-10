@@ -3,7 +3,7 @@ package org.hu.config;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /*
- * 
+ * 用来替代web.xml文件
  */
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer{
 	@Override
