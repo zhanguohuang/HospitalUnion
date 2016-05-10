@@ -19,6 +19,6 @@
 			</tr>
 		</table>
 	</c:forEach>
-	<a href="/HospitalUnion">返回首页</a>
+	<a href="<%=request.getContextPath()%>">返回首页</a>
 </body>
 </html>
