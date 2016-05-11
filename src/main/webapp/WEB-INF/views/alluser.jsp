@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<!doctype html>
 <html>
 <head>
 <meta charset="utf-8"/>
@@ -10,9 +11,9 @@
 	div#rightbanner{
 		/* 这里对整个右侧的float盒模型进行定义 */
 		/* 盒模型 */
-		padding:3%;
+		/* padding:3%; */
 		border:2px dashed yellow;
-		width: 20%;
+		/* width: 5%; */
 		/* 浮动 */
 		float:right;
 		/* 背景颜色 */
@@ -31,40 +32,43 @@
 	div#rightbanner_p{
 		/* 这里对右侧的正文p进行定义 */
 	}
+	tr#msg{
+		background-color: pink;
+		color: orange;
+	}
 </style>
 </head>	
 <body>
 	
 	<div id="rightbanner" >
-		<h2 id="rightbanner_h2" >这里是标题</h2>
-		<p id="rightbanner_p" >这里是正文</p>
-		
-	  <table width="500" border="0" cellspacing="0" cellpadding="0">
-	    <tr>
-		  <td>
-		    <table width="500" >
-				<form name="loginForm" method="post" action="">
+	
+	<h2 id="rightbanner_h2" >这里是标题</h2>
+	<p id="rightbanner_p" >这里是正文</p>
+	<form method="post" action="/adduser">
+		    <table width="300px">			
 				  <tr>
-				    <td width="200"><div align="right">User Name:&nbsp;</div></td>
-					<td width="200"><input type="text" name="username" value="" ></td>
+				    <td width="100"><div align="right">ID:&nbsp;</div></td>
+					<td width="100"><input type="text" name="id"></td>
 				  </tr>
 				  <tr>
-				    <td width="200"><div align="right">Password:&nbsp;</div></td>
-					<td width="200"><input type="password" name="password"></td>
+				    <td width="100"><div align="right">User Name:&nbsp;</div></td>
+					<td width="100"><input type="text" name="username"></td>
 				  </tr>
 				  <tr>
-				  	<td><span><c:out value="#{ message }" /></span></td>
+				    <td width="100"><div align="right">Password:&nbsp;</div></td>
+					<td width="100"><input type="password" name="password"></td>
 				  </tr>
+				  <c:if test="${not empty message}">
+					  <tr id="msg">
+					  	<td colspan="2" ><c:out value="${message}" /></td>
+					  </tr>
+				  </c:if>
 				  <tr>
-					<td width="200"><br><input type="submit" name="submit" value="提交"></td>
-				    <td width="200"><input type="reset" name="reset"></td>
-				  </tr>
-				  
-				</form>
+					<td width="100"><div align="right"><input type="submit"value="新增"></div></td>
+				    <td width="100"><div align="right"><input type="reset"></div></td>
+				  </tr>				
 			</table>
-		  </td>
-		</tr>
-	  </table>
+	  </form>
 	</div>
 	
 	<c:forEach items="${userList}" var="userList">
