@@ -4,6 +4,8 @@ import java.security.MessageDigest;
 
 /*
  * md5加密
+ * @Param String 需要加密的字符串
+ * @Return String 加密后的字符串
  */
 
 public class MD5 {
