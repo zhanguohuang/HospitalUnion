@@ -16,6 +16,7 @@
 				<td width="150px">${userList.id}</td>
 				<td width="150px">${userList.username}</td>
 				<td width="150px">${userList.password}</td>
+				<td width="150px"><a href="">删除</a></td>
 			</tr>
 		</table>
 	</c:forEach>
