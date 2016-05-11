@@ -39,6 +39,7 @@
 		<h2 id="rightbanner_h2" >这里是标题</h2>
 		<p id="rightbanner_p" >这里是正文</p>
 		
+		
 	  <table width="500" border="0" cellspacing="0" cellpadding="0">
 	    <tr>
 		  <td>
