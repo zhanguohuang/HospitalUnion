@@ -42,7 +42,7 @@
 	
 	<div id="rightbanner" >	
 	<h2 id="rightbanner_h2" >新增User</h2>
-	<form method="post" action="/adduser">
+	<form method="post" action="/HospitalUnion/adduser">
 		    <table>			
 				  <tr>	
 				    <td width="120"><div align="right">ID:&nbsp;</div></td>
@@ -56,7 +56,7 @@
 				    <td width="120"><div align="right">Password:&nbsp;</div></td>
 					<td width="120"><input type="password" name="password"></td>
 				  </tr>
-				  <c:if test="${not empty message}">
+				  <c:if test="${!message}">
 					  <tr id="msg">
 					  	<td colspan="2" ><c:out value="${message}" /></td>
 					  </tr>

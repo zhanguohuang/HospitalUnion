@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class UserController {
@@ -27,10 +28,11 @@ public class UserController {
 	public String addUser(@RequestParam("id") int id,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password,
-			Model model){
+			RedirectAttributes model){
 		User user = new User(id, username, password);
 		if(auserdao.get(user) != null){
-			model.addAttribute("message","此id已经存在,请重新输入");
+			model.addFlashAttribute("message","此id已经存在,请重新输入");
+			return "redirect:/alluser";		
 		}
 		else{
 			auserdao.add(user);
