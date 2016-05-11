@@ -40,23 +40,21 @@
 </head>	
 <body>
 	
-	<div id="rightbanner" >
-	
-	<h2 id="rightbanner_h2" >这里是标题</h2>
-	<p id="rightbanner_p" >这里是正文</p>
+	<div id="rightbanner" >	
+	<h2 id="rightbanner_h2" >新增User</h2>
 	<form method="post" action="/adduser">
-		    <table width="300px">			
-				  <tr>
-				    <td width="100"><div align="right">ID:&nbsp;</div></td>
-					<td width="100"><input type="text" name="id"></td>
+		    <table>			
+				  <tr>	
+				    <td width="120"><div align="right">ID:&nbsp;</div></td>
+					<td width="120"><input type="text" name="id"></td>
 				  </tr>
 				  <tr>
-				    <td width="100"><div align="right">User Name:&nbsp;</div></td>
-					<td width="100"><input type="text" name="username"></td>
+				    <td width="120"><div align="right">User Name:&nbsp;</div></td>
+					<td width="120"><input type="text" name="username"></td>
 				  </tr>
 				  <tr>
-				    <td width="100"><div align="right">Password:&nbsp;</div></td>
-					<td width="100"><input type="password" name="password"></td>
+				    <td width="120"><div align="right">Password:&nbsp;</div></td>
+					<td width="120"><input type="password" name="password"></td>
 				  </tr>
 				  <c:if test="${not empty message}">
 					  <tr id="msg">

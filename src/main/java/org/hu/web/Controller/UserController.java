@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UserController {
@@ -20,5 +21,20 @@ public class UserController {
 		List<User> list = auserdao.getAll();
 		model.addAttribute("userList", list);
 		return "alluser";
+	}
+	
+	@RequestMapping(value="/adduser", method=RequestMethod.POST)
+	public String addUser(@RequestParam("id") int id,
+			@RequestParam("username") String username,
+			@RequestParam("password") String password,
+			Model model){
+		User user = new User(id, username, password);
+		if(auserdao.get(user) != null){
+			model.addAttribute("message","此id已经存在,请重新输入");
+		}
+		else{
+			auserdao.add(user);
+		}
+		return "redirect:/alluser";
 	}
 }
