@@ -1,5 +1,8 @@
 package org.hu.config;
 
+import javax.servlet.Filter;
+
+import org.hu.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /*
@@ -20,4 +23,10 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	protected Class<?>[] getServletConfigClasses(){
 		return new Class<?>[] { WebConfig.class };
 	}
+	
+	//注册过滤器，会映射到DispatcherServlet上
+//	@Override
+//	protected Filter[] getServletFilters() {
+//		return new Filter[] {new CharacterEncodingFilter()};
+//	}
 }

@@ -2,28 +2,28 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 <style>
 	td{
-		border-style: solid ;
+		border-style:10px solid ;
 	}
 	div#rightbanner{
 		/* 这里对整个右侧的float盒模型进行定义 */
 		/* 盒模型 */
 		/* padding:3%; */
-		border:2px dashed yellow;
+		border:2px dashed black;
 		/* width: 5%; */
 		/* 浮动 */
 		float:right;
 		/* 背景颜色 */
-		background-color: lightcyan;
+		background-color: write;
 		/* 字体大小，居中，行距 */
 		font-size: 1.2em;
 		text-align: center;
 		line-height: 1.4em;
 		/* 字体颜色  */
-		color: rgb(10, 255, 180);
+		color: black;
 	}
 	div#rightbanner_h2{
 		/* 这里对右侧的标题h2进行定义 */
@@ -32,9 +32,8 @@
 	div#rightbanner_p{
 		/* 这里对右侧的正文p进行定义 */
 	}
-	tr#msg{
-		background-color: pink;
-		color: orange;
+	#msg{
+		color: red;
 	}
 </style>
 </head>	
@@ -55,20 +54,15 @@
 				  <tr>
 				    <td width="120"><div align="right">Password:&nbsp;</div></td>
 					<td width="120"><input type="password" name="password"></td>
-				  </tr>
-				  <c:if test="${!message}">
-					  <tr id="msg">
-					  	<td colspan="2" ><c:out value="${message}" /></td>
-					  </tr>
-				  </c:if>
-				  <tr>
-					<td width="100"><div align="right"><input type="submit"value="新增"></div></td>
-				    <td width="100"><div align="right"><input type="reset"></div></td>
-				  </tr>				
+				  </tr>			
 			</table>
+			<c:if test="${!message}">
+				  <div id="msg"><c:out value="${message}" /></div>
+			</c:if>
+				<input type="submit"value="新增">
+				<input type="reset">
 	  </form>
 	</div>
-	
 	<c:forEach items="${userList}" var="userList">
 		<table>
 			<tr>

@@ -1,6 +1,6 @@
 <html>
 <head>
-<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf">
 <title>Insert title here</title>
 </head>
 <body>
