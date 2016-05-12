@@ -20,9 +20,9 @@ public class CharacterEncodingFilter implements Filter {
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
-		request.setCharacterEncoding("GBK");  //±àÂëĞ´ËÀÎªutf-8	
-		response.setContentType("text/html;charset=GBK");
-		response.setCharacterEncoding("GBK");
+		request.setCharacterEncoding("utf-8");  //±àÂëĞ´ËÀÎªutf-8	
+		response.setContentType("text/html;charset=utf-8");
+		response.setCharacterEncoding("utf-8");
 		chain.doFilter(request, response);
 	}
 
