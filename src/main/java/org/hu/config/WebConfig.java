@@ -39,6 +39,8 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	/*
 	 * 配置输出内容导航类
 	 * 存在的缺陷，只能判定发什么给客户端，而不能知道客户端发什么样的内容给控制器，比如json,xml时，服务就挂了
+	 * 可以在控制器中用@RequestBody和@RequestParam解决接受json的问题
+	 * 一旦涉及json,此class一定要配置,而且要导入jackson的core包和databind包
 	 */
 	@Configuration
 	public static class ContentNegotiationConfig extends WebMvcConfigurerAdapter{
