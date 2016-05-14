@@ -53,6 +53,9 @@ public class UserController {
 //		return user;
 //	}
 	
+	/*
+	 * 增加一个User,然后重定向到/alluser
+	 */
 	@RequestMapping(value="/ajaxAddUser")
 	public String ajaxAddUser(@RequestBody User user){
 		auserdao.add(user);
