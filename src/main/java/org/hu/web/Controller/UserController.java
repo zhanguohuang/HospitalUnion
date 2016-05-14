@@ -43,6 +43,9 @@ public class UserController {
 		return "redirect:/alluser";
 	}
 	
+	/*
+	 * 获取每一个独立参数的方法
+	 */
 //	@RequestMapping(value="/ajax")
 //	public @ResponseBody User ajaxdemo(@RequestParam(value="id") String id){
 //		User user = new User(55,"55","56");
@@ -50,8 +53,18 @@ public class UserController {
 //		return user;
 //	}
 	
-	@RequestMapping(value="/ajax")
-	public void ajaxdemo(@RequestParam String id){
-		System.out.println(id);
+	@RequestMapping(value="/ajaxAddUser")
+	public String ajaxAddUser(@RequestBody User user){
+		auserdao.add(user);
+		return "redirect:/alluser";
 	}
+	
+	/*
+	 * 使用@RequestBody和@ResponseBody增加多个User的方法
+	 */
+//	@RequestMapping(value="/ajaxAddUsers")
+//	public @ResponseBody User ajaxAddUser(@RequestBody User user){
+//		//System.out.println(user.getId());
+//		return user;
+//	}
 }

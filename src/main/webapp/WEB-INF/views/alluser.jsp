@@ -51,24 +51,48 @@
 			//var username = $("#username").val();
 			//var password = $("#password").val();
 			//alert(id+';'+username+';'+password);
-			//已经调通
+			
+			//已经调通,简单的获取参数
 			//var url = "ajax";
 			//var args = {"id" : "15",username:"2",password:"13"};
 			//$.getJSON(url,args,function(data){
 			//	alert(data.password);
 			//})
 			
-			var url = "ajax";
-			var args = {"id" : "15",username:"2",password:"13"};
+			//增加一个自定义的User,成功后重定向到alluser
+			var url = "ajaxAddUser";
+			var id = $("#id").val();
+			var username = $("#username").val();
+			var password = $("#password").val();
+			var args = {"id":id, "username":username,"password":password};
 			$.ajax({
 				type:"post",
 				url:url,
-				data:{"id" : "15","username":"2","password":"13"},
-				success:function(data){
-					alert(data);
-				},
-				dataType="json"
-			})
+				dataType:"json",
+				contentType:"application/json",
+				data:JSON.stringify(args),
+				success:function(){
+					window.location.href="alluser";
+				}
+			});
+			
+			//已经调通，增加多个User
+			//var url = "ajaxAddUsers";
+			//var saveDataAry = [];
+			//var args1 = {"id" : "21","username":"theone","password":"21"};
+			//var args2 = {"id" : "22","username":"theone","password":"22"};
+			//saveDataAry.push(args1);
+			//saveDataAry.push(args2);
+			//$.ajax({
+			//	type:"post",
+			//	url:"ajaxAddUsers",
+			//	dataType:"json",
+			//	contentType:"application/json",
+			//	data:JSON.stringify(saveDataAry),
+			//	success:function(data){
+			//		alert(data.id);
+			//	}
+			//});
 		})
 	})
 </script>	
