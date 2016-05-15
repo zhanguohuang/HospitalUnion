@@ -1,6 +1,8 @@
 package org.hu.web.Controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.hu.data.dao.AnnocationUserDao;
 import org.hu.data.model.User;
@@ -20,10 +22,17 @@ public class UserController {
 	AnnocationUserDao auserdao;
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
-	public String getAllUser(Model model){
-		//int pagetotal = auserdao.getCount();
-		//model.addAttribute("pagetotal", pagetotal);
-		List<User> list = auserdao.getAll();
+	public String getAllUser(@RequestParam(value="pagesize",defaultValue="10") int pagesize,						
+							@RequestParam(value="currentpage",defaultValue="1") int currentpage,
+							Model model){	
+		int pagetotal = auserdao.getCount().size();
+		int start = 0;
+		int end = 10;
+		Map<String,Integer> map = new HashMap<String,Integer>();
+		map.put("start", start);
+		map.put("end", end);
+		List<User> list = auserdao.getUsers(map);
+		model.addAttribute("pagetotal", pagetotal);
 		model.addAttribute("userList", list);
 		return "alluser";
 	}
@@ -41,7 +50,6 @@ public class UserController {
 		}
 		else{
 			int i = auserdao.add(user);
-			System.out.println(i);
 		}
 		return "redirect:/alluser";
 	}

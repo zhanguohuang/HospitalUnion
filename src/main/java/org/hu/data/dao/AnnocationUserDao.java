@@ -1,11 +1,14 @@
 package org.hu.data.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.type.JdbcType;
 import org.hu.data.model.User;
 
 public interface AnnocationUserDao {
@@ -21,9 +24,12 @@ public interface AnnocationUserDao {
 	@Delete("delete * from user where id=#{id}")
 	public void delete(int id);
 	
-	@Select("select * from user")
-	public List<User> getAll();
+	@Select("select * from user limit #{start},#{end}")
+	public List<User> getUsers(Map map);
 	
-//	@Select("select count(*) as pagetotal form user")
-//	public int getCount();
+	@Select("select * from user")
+	public List<User> getCount();
+	
+//	@Select("select count(*) from user")
+//	public List getCount();
 }

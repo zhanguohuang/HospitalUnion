@@ -41,7 +41,9 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var pagetotal = $("#pagetotal").val();
-		for(var i=1;i<=pagetotal;i++){
+		var pagesize = $("#pagesize").val();
+		var pagesum = Math.ceil(pagetotal/pagesize);
+		for(var i=1;i<=pagesum;i++){
 			var input = $("<input></input>");
 			input.attr("id","page"+i);
 			input.attr("type","button");
@@ -154,7 +156,7 @@
 		</table>
 	</c:forEach>	
 	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
-	<input type="hidden" id="pagesize" value="10">
+	每页显示：<input type="text" id="pagesize" value="10">条<br/>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
 </body>
