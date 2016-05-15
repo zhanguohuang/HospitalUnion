@@ -23,6 +23,7 @@ public class UserController {
 	public String getAllUser(Model model){
 		List<User> list = auserdao.getAll();
 		model.addAttribute("userList", list);
+		model.addAttribute("pagetotal", "5");
 		return "alluser";
 	}
 	

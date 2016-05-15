@@ -40,6 +40,18 @@
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
+		var pagetotal = $("#pagetotal").val();
+		for(var i=1;i<=pagetotal;i++){
+			var input = $("<input></input>");
+			input.attr("id","page"+i);
+			input.attr("type","button");
+			input.attr("name","page"+i);
+			input.attr("value",i);
+			$("#pagetotal").before(input);
+		}
+	})	
+
+	$(document).ready(function(){
 		$("#click").click(function(){
 			var url = "alluser";
 			$.getJSON(url,function(data){
@@ -123,16 +135,25 @@
 				<input type="reset"/>
 	  </form>
 	</div>
+	
+	<div id="query">
+		用户id: <input type="text" />&nbsp;
+		用户名称: <input type="text"/>&nbsp;
+		<input type="button" value="查询" />
+	</div>
+	
 	<c:forEach items="${userList}" var="userList">
 		<table>
 			<tr>
 				<td width="150px">${userList.id}</td>
 				<td width="150px">${userList.username}</td>
 				<td width="150px">${userList.password}</td>
-				<td width="150px"><a href="">删除</a></td>
+				<td><a href="" title="可修改任意字段">修改</a></td>
+				<td width="150px"><a href="mapping?id=${userList.id}">删除</a></td>
 			</tr>
 		</table>
-	</c:forEach>
+	</c:forEach>	
+	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
 </body>
