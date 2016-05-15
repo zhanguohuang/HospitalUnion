@@ -26,11 +26,10 @@ public class UserController {
 							@RequestParam(value="currentpage",defaultValue="1") int currentpage,
 							Model model){	
 		int pagetotal = auserdao.getCount().size();
-		int start = 0;
-		int end = 10;
+		int start = (currentpage-1) * pagesize;
 		Map<String,Integer> map = new HashMap<String,Integer>();
 		map.put("start", start);
-		map.put("end", end);
+		map.put("count", pagesize);
 		List<User> list = auserdao.getUsers(map);
 		model.addAttribute("pagetotal", pagetotal);
 		model.addAttribute("userList", list);

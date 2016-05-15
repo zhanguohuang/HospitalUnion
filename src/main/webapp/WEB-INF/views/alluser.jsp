@@ -44,14 +44,13 @@
 		var pagesize = $("#pagesize").val();
 		var pagesum = Math.ceil(pagetotal/pagesize);
 		for(var i=1;i<=pagesum;i++){
-			var input = $("<input></input>");
-			input.attr("id","page"+i);
-			input.attr("type","button");
-			input.attr("name","page"+i);
-			input.attr("value",i);
-			$("#pagetotal").before(input);
+			var a = $("<a></a>");
+			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize);
+			a.html(i);
+			$("#pagetotal").before(a);
 		}
 	})	
+	
 
 	$(document).ready(function(){
 		$("#click").click(function(){

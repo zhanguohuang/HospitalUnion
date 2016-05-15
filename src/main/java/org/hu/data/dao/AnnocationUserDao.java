@@ -24,8 +24,8 @@ public interface AnnocationUserDao {
 	@Delete("delete * from user where id=#{id}")
 	public void delete(int id);
 	
-	@Select("select * from user limit #{start},#{end}")
-	public List<User> getUsers(Map map);
+	@Select("select * from user limit #{start},#{count}")
+	public List<User> getUsers(Map<String,Integer> map);
 	
 	@Select("select * from user")
 	public List<User> getCount();
