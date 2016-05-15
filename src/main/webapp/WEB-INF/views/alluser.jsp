@@ -40,12 +40,6 @@
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
-		$("#export").click(function(){
-			alert("导出Excel");
-		})
-	})
-
-	$(document).ready(function(){
 		var pagetotal = $("#pagetotal").val();
 		var pagesize = $("#pagesize").val();
 		var pagesum = Math.ceil(pagetotal/pagesize);
@@ -145,8 +139,8 @@
 	
 	<div id="query">
 		<form>
-			用户id: <input type="text" name="qry_id" />&nbsp;
-			用户名称: <input type="text" name="qry_username" />&nbsp;
+			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" />&nbsp;
+			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" />&nbsp;
 			<input type="submit" value="查询" />
 		</form> 
 	</div>
@@ -165,7 +159,7 @@
 	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
 	每页显示<input type="button" id="pagesize" value="${pagesize}">条&nbsp;
 	总共有<input type="button" value="${pagetotal}" />条数据&nbsp;
-	<input type="button" id="export" value="导出Excel"><br/>
+	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}">下载文件</a><br/>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
 </body>
