@@ -21,9 +21,10 @@ public class UserController {
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
 	public String getAllUser(Model model){
+		//int pagetotal = auserdao.getCount();
+		//model.addAttribute("pagetotal", pagetotal);
 		List<User> list = auserdao.getAll();
 		model.addAttribute("userList", list);
-		model.addAttribute("pagetotal", "5");
 		return "alluser";
 	}
 	
@@ -39,7 +40,8 @@ public class UserController {
 			return "redirect:/alluser";		
 		}
 		else{
-			auserdao.add(user);
+			int i = auserdao.add(user);
+			System.out.println(i);
 		}
 		return "redirect:/alluser";
 	}

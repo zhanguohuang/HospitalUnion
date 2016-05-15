@@ -154,6 +154,7 @@
 		</table>
 	</c:forEach>	
 	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
+	<input type="hidden" id="pagesize" value="10">
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
 </body>

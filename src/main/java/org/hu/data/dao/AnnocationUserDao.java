@@ -23,4 +23,7 @@ public interface AnnocationUserDao {
 	
 	@Select("select * from user")
 	public List<User> getAll();
+	
+//	@Select("select count(*) as pagetotal form user")
+//	public int getCount();
 }
