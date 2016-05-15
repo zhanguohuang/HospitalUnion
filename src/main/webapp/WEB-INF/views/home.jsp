@@ -11,6 +11,6 @@
 </head>
 <body>
 	<p>hello</p>
-	<a href="alluser">显示所有的User</a>
+	<a href="alluser?qry_id=&qry_username=">显示所有的User</a>
 </body>
 </html>

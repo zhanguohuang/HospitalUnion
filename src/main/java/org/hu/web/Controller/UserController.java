@@ -28,7 +28,7 @@ public class UserController {
 							@RequestParam(value="qry_username",required=false) String qry_username,
 							Model model){	
 		//sb用于拼接查询条件 
-		StringBuilder sb = new StringBuilder();
+		StringBuilder sb = new StringBuilder();		
 		if(!(qry_id.equals("") && qry_username.equals(""))){
 			sb.append("where ");
 			if(!qry_id.equals("")){
