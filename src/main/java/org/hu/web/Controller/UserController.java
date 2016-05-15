@@ -32,6 +32,7 @@ public class UserController {
 		map.put("count", pagesize);
 		List<User> list = auserdao.getUsers(map);
 		model.addAttribute("pagetotal", pagetotal);
+		model.addAttribute("pagesize", pagesize);
 		model.addAttribute("userList", list);
 		return "alluser";
 	}

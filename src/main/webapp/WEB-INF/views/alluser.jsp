@@ -47,7 +47,7 @@
 			var a = $("<a></a>");
 			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize);
 			a.html(i);
-			a.css("margin-right","10px")
+			a.css("margin-right","10px");
 			$("#pagetotal").before(a);
 		}
 	})	
@@ -156,7 +156,7 @@
 		</table>
 	</c:forEach>	
 	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
-	每页显示：<input type="text" id="pagesize" value="10">条<br/>
+	每页显示：<input type="text" id="pagesize" value="${pagesize}">条<br/>
 	总共有<input type="button" value="${pagetotal}">条数据</br>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
