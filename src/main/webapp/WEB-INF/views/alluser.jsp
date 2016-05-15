@@ -139,9 +139,11 @@
 	</div>
 	
 	<div id="query">
-		用户id: <input type="text" />&nbsp;
-		用户名称: <input type="text"/>&nbsp;
-		<input type="button" value="查询" />
+		<form>
+			用户id: <input type="text" name="qry_id" />&nbsp;
+			用户名称: <input type="text" name="qry_username" />&nbsp;
+			<input type="submit" value="查询" />
+		</form> 
 	</div>
 	
 	<c:forEach items="${userList}" var="userList">

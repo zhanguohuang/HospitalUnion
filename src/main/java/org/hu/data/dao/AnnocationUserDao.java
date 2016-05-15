@@ -24,11 +24,11 @@ public interface AnnocationUserDao {
 	@Delete("delete * from user where id=#{id}")
 	public void delete(int id);
 	
-	@Select("select * from user limit #{start},#{count}")
-	public List<User> getUsers(Map<String,Integer> map);
+	@Select("select * from user ${sb} limit #{start},#{count}")
+	public List<User> getUsers(Map map);
 	
-	@Select("select * from user")
-	public List<User> getCount();
+	@Select("select * from user ${sb}")
+	public List<User> getCount(Map map);
 	
 //	@Select("select count(*) from user")
 //	public List getCount();

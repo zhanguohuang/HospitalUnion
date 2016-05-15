@@ -24,13 +24,30 @@ public class UserController {
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
 	public String getAllUser(@RequestParam(value="pagesize",defaultValue="10") int pagesize,						
 							@RequestParam(value="currentpage",defaultValue="1") int currentpage,
+							@RequestParam(value="qry_id",required=false) String qry_id,
+							@RequestParam(value="qry_username",required=false) String qry_username,
 							Model model){	
-		int pagetotal = auserdao.getCount().size();
+		//sb用于拼接查询条件 
+		StringBuilder sb = new StringBuilder();
+		if(!(qry_id.equals("") && qry_username.equals(""))){
+			sb.append("where ");
+			if(!qry_id.equals("")){
+				sb.append("id='"+qry_id+"'");
+				if(!qry_username.equals("")){
+					sb.append(" and username='"+qry_username+"'");
+				}
+			}else{
+				sb.append("username='"+qry_username+"'");
+
+			}	
+		}	
 		int start = (currentpage-1) * pagesize;
-		Map<String,Integer> map = new HashMap<String,Integer>();
+		Map map = new HashMap();
 		map.put("start", start);
 		map.put("count", pagesize);
-		List<User> list = auserdao.getUsers(map);
+		map.put("sb",sb);
+		int pagetotal = auserdao.getCount(map).size();
+		List<User> list = auserdao.getUsers(map);		
 		model.addAttribute("pagetotal", pagetotal);
 		model.addAttribute("pagesize", pagesize);
 		model.addAttribute("userList", list);
