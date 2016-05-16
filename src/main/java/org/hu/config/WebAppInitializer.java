@@ -25,8 +25,8 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	}
 	
 	//注册过滤器，会映射到DispatcherServlet上
-//	@Override
-//	protected Filter[] getServletFilters() {
-//		return new Filter[] {new CharacterEncodingFilter()};
-//	}
+	@Override
+	protected Filter[] getServletFilters() {
+		return new Filter[] {new CharacterEncodingFilter()};
+	}
 }

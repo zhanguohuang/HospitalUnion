@@ -65,7 +65,6 @@ public class UserController {
 			@RequestParam("username") String username,
 			@RequestParam("password") String password,
 			RedirectAttributes model){
-		System.out.println("id=" + id + ", username=" + username +", password=" + password +";");
 		User user = new User(id, username, password);
 		if(auserdao.get(user) != null){
 			model.addFlashAttribute("message","此id已经存在,请重新输入");

@@ -18,7 +18,7 @@ public class DataConfig {
 	@Bean
 	public DataSource dataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
-		dataSource.setUrl("jdbc:mysql://localhost:3306/test");
+		dataSource.setUrl("jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=UTF-8");
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
 		dataSource.setUsername("root");
 		dataSource.setPassword("mysqladmin");
