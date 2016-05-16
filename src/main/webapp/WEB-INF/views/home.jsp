@@ -1,7 +1,9 @@
+<%@ page language="java" contentType="text/html; utf-8"
+    pageEncoding="utf-8"%>
 <html>
 <head>
 <script type="text/javascript" src="js/jquery-1.12.3.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <script type="text/javascript">
 	$(document).ready(function(){
