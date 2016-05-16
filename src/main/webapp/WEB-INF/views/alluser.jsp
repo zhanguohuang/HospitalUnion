@@ -50,7 +50,7 @@
 			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize);
 			a.html(i);
 			a.css("margin-right","10px");
-			$("#pagetotal").before(a);
+			$("#paging").before(a);
 		}
 	})	
 	
@@ -144,23 +144,23 @@
 			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" />&nbsp;
 			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" />&nbsp;
 			<input type="submit" value="查询" />
+			<c:forEach items="${userList}" var="userList">
+				<table>
+					<tr>
+						<td width="150px">${userList.id}</td>
+						<td width="150px">${userList.username}</td>
+						<td width="150px">${userList.password}</td>
+						<td><a href="" title="可修改任意字段">修改</a></td>
+						<td width="150px"><a href="mapping?id=${userList.id}">删除</a></td>
+					</tr>
+				</table>
+			</c:forEach>
+			<div id="paging">	
+				每页显示<input type="text" id="pagesize" name="pagesize" value="${pagesize}">条&nbsp;
+				总共有<input type="button" id="pagetotal" value="${pagetotal}" />条数据&nbsp;
+			</div>
 		</form> 
 	</div>
-	
-	<c:forEach items="${userList}" var="userList">
-		<table>
-			<tr>
-				<td width="150px">${userList.id}</td>
-				<td width="150px">${userList.username}</td>
-				<td width="150px">${userList.password}</td>
-				<td><a href="" title="可修改任意字段">修改</a></td>
-				<td width="150px"><a href="mapping?id=${userList.id}">删除</a></td>
-			</tr>
-		</table>
-	</c:forEach>	
-	<input type="hidden" id="pagetotal" value="${pagetotal} "/>
-	每页显示<input type="button" id="pagesize" value="${pagesize}">条&nbsp;
-	总共有<input type="button" value="${pagetotal}" />条数据&nbsp;
 	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}">下载文件</a><br/>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
