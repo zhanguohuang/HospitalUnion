@@ -16,10 +16,10 @@ public interface AnnocationUserDao {
 	public int add(User user);
 	
 	@Select("select * from user where id=#{id}")
-	public User get(User user);
+	public User get(int id);
 	
-	@Update("update user set username=#{username}, password=#{password} where id=#{id})")
-	public User update(User user);
+	@Update("update user set username=#{username}, password=#{password} where id=#{id}")
+	public void update(User user);
 	
 	@Delete("delete * from user where id=#{id}")
 	public void delete(int id);

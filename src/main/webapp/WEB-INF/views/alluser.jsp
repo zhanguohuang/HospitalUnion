@@ -150,7 +150,7 @@
 						<td width="150px">${userList.id}</td>
 						<td width="150px">${userList.username}</td>
 						<td width="150px">${userList.password}</td>
-						<td><a href="" title="可修改任意字段">修改</a></td>
+						<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a></td>
 						<td width="150px"><a href="mapping?id=${userList.id}">删除</a></td>
 					</tr>
 				</table>

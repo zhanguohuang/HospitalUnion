@@ -66,13 +66,29 @@ public class UserController {
 			@RequestParam("password") String password,
 			RedirectAttributes model){
 		User user = new User(id, username, password);
-		if(auserdao.get(user) != null){
+		if(auserdao.get(user.getId()) != null){
 			model.addFlashAttribute("message","此id已经存在,请重新输入");
 			return "redirect:/alluser";		
 		}
 		else{
 			auserdao.add(user);
 		}
+		return "redirect:/alluser";
+	}
+	
+	@RequestMapping(value="/updateuser", method=RequestMethod.GET)
+	public String updateUser(@RequestParam("id") int id, Model model){
+		User user = auserdao.get(id);
+		model.addAttribute("user", user);
+		return "updateuser";
+	}
+	
+	@RequestMapping(value="/updateuser", method=RequestMethod.POST)
+	public String update(@RequestParam("id") int id, 
+						@RequestParam("username") String username, 
+						@RequestParam("password") String password){
+		User user = new User(id, username, password);
+		auserdao.update(user);
 		return "redirect:/alluser";
 	}
 	
