@@ -1,4 +1,4 @@
-package org.hu.web.Controller;
+package org.hu.web.controller;
 
 import java.util.HashMap;
 import java.util.List;

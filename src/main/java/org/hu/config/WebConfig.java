@@ -21,7 +21,7 @@ import org.springframework.web.servlet.view.json.MappingJackson2JsonView;
  */
 @Configuration
 @EnableWebMvc
-@ComponentScan("org.hu.web.Controller")
+@ComponentScan("org.hu.web.controller")
 @EnableAspectJAutoProxy(proxyTargetClass = true)
 public class WebConfig extends WebMvcConfigurerAdapter {
 	@Bean
