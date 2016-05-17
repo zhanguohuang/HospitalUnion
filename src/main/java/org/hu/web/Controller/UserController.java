@@ -92,6 +92,18 @@ public class UserController {
 		return "redirect:/alluser";
 	}
 	
+	/**
+	 * 根据id删除一个用户User。<br>
+	 * 
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(value="/deleteuser", method=RequestMethod.GET)
+	public String delete( @RequestParam(value="id",required=true) int id){
+		auserdao.delete(id);
+		return "redirect:/alluser";
+	}
+	
 	@RequestMapping(value="/export")
 	public ModelAndView export(@RequestParam(value="qry_id",required=false,defaultValue="") String qry_id,
 								@RequestParam(value="qry_username",required=false,defaultValue="") String qry_username,
