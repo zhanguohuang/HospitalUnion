@@ -22,8 +22,4 @@ public class RootConfig {
 	public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
 		return new PropertySourcesPlaceholderConfigurer();
 	}
-	
-	@Bean LogAspect logAspect(){
-		return new LogAspect();
-	}
 }
