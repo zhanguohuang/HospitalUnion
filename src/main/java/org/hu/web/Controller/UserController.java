@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hu.annocation.SystemControllerLog;
 import org.hu.data.dao.AnnocationUserDao;
 import org.hu.data.model.User;
 import org.hu.export.UserExcelView;
@@ -26,6 +27,7 @@ public class UserController {
 	AnnocationUserDao auserdao;
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
+	@SystemControllerLog(description = "列出所有的user")
 	public String getAllUser(@RequestParam(value="pagesize",defaultValue="10") int pagesize,						
 							@RequestParam(value="currentpage",defaultValue="1") int currentpage,
 							@RequestParam(value="qry_id",required=false,defaultValue="") String qry_id,

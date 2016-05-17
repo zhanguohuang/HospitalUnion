@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.type.JdbcType;
+import org.hu.annocation.SystemControllerLog;
 import org.hu.data.model.User;
 
 public interface AnnocationUserDao {
@@ -26,7 +27,7 @@ public interface AnnocationUserDao {
 	
 	@Select("select * from user ${sb} limit #{start},#{count}")
 	public List<User> getUsers(Map map);
-	
+
 	@Select("select * from user ${sb}")
 	public List<User> getCount(Map map);
 	
