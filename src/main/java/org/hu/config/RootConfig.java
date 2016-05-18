@@ -13,7 +13,7 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
  * bean¹¤³§
  */
 @Configuration
-@Import(DataConfig.class)
+@Import({DataConfig.class,SecurityConfig.class})
 @ImportResource("classpath:spring-mybatis.xml")
 @ComponentScan(basePackages={"org.hu.data.dao","org.hu.logservice"})
 @EnableAspectJAutoProxy
