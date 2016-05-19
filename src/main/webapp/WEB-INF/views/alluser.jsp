@@ -161,7 +161,7 @@
 			</div>
 		</form> 
 	</div>
-	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}">下载文件</a><br/>
+	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}">导出Excel</a><br/>
 	<a href="<%=request.getContextPath()%>">返回首页</a>
 	<p id="click">点击测试ajax</p>
 </body>
