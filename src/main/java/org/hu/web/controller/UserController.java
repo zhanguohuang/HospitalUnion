@@ -27,26 +27,24 @@ public class UserController {
 	AnnocationUserDao auserdao;
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
-	@SystemControllerLog(description = "列出所有的user")
+	//@SystemControllerLog(description = "列出所有的user")
 	public String getAllUser(@RequestParam(value="pagesize",defaultValue="10") int pagesize,						
 							@RequestParam(value="currentpage",defaultValue="1") int currentpage,
 							@RequestParam(value="qry_id",required=false,defaultValue="") String qry_id,
 							@RequestParam(value="qry_username",required=false,defaultValue="") String qry_username,
+							@RequestParam(value="qry_email",required=false,defaultValue="") String qry_email,
 							Model model){	
 		//sb用于拼接查询条件 
 		StringBuilder sb = new StringBuilder();		
-		if(!(qry_id.equals("") && qry_username.equals(""))){
-			sb.append("where ");
-			if(!qry_id.equals("")){
-				sb.append("id='"+qry_id+"'");
-				if(!qry_username.equals("")){
-					sb.append(" and username='"+qry_username+"'");
-				}
-			}else{
-				sb.append("username='"+qry_username+"'");
-
-			}	
-		}	
+		if(!qry_id.equals("")){
+			sb.append(" and id like '%"+qry_id+"%'");
+		}
+		if(!qry_username.equals("")){
+				sb.append(" and username like '%"+qry_username+"%'");
+		}
+		if(!qry_email.equals("")){
+				sb.append(" and email like '%"+qry_email+"%'");
+		}
 		int start = (currentpage-1) * pagesize;
 		Map map = new HashMap();
 		map.put("start", start);
@@ -56,6 +54,7 @@ public class UserController {
 		List<User> list = auserdao.getUsers(map);
 		model.addAttribute("qry_id", qry_id);
 		model.addAttribute("qry_username", qry_username);
+		model.addAttribute("qry_email", qry_email);
 		model.addAttribute("pagetotal", pagetotal);
 		model.addAttribute("pagesize", pagesize);
 		model.addAttribute("userList", list);

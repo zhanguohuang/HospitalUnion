@@ -4,10 +4,10 @@
 <!doctype html>
 <html>
 <head>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
 <style>
 	td{
@@ -71,7 +71,7 @@
 			
 			//已经调通,简单的获取参数
 			//var url = "ajax";
-			//var args = {"id" : "15",username:"2",password:"13"};
+			//var args = {"id" : "15",username:"2",password:"13","email":"123@qq.com"};
 			//$.getJSON(url,args,function(data){
 			//	alert(data.password);
 			//})
@@ -81,7 +81,8 @@
 			var id = $("#id").val();
 			var username = $("#username").val();
 			var password = $("#password").val();
-			var args = {"id":id, "username":username,"password":password};
+			var email = $("#email").val();
+			var args = {"id":id, "username":username,"password":password,"email":email};
 			$.ajax({
 				type:"post",
 				url:url,
@@ -96,8 +97,8 @@
 			//已经调通，增加多个User
 			//var url = "ajaxAddUsers";
 			//var saveDataAry = [];
-			//var args1 = {"id" : "21","username":"theone","password":"21"};
-			//var args2 = {"id" : "22","username":"theone","password":"22"};
+			//var args1 = {"id" : "21","username":"theone","password":"21","email":"123@qq.com"};
+			//var args2 = {"id" : "22","username":"theone","password":"22","email":"123@qq.com"};
 			//saveDataAry.push(args1);
 			//saveDataAry.push(args2);
 			//$.ajax({
@@ -112,6 +113,14 @@
 			//});
 		})
 	})
+	
+	function checkemail(){
+		var email = $("#email").val();
+		var regex  = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+		if(!regex.test(email)){
+			alert("输入的邮箱格式不对，请重新输入");
+		}
+	}
 </script>	
 <body>
 	
@@ -133,7 +142,7 @@
 				  </tr>		
 				  <tr>
 				    <td width="120"><div align="right">Email:&nbsp;</div></td>
-					<td width="120"><input type="text" name="email" id="email"></td>
+					<td width="120"><input type="text" name="email" id="email" onblur="checkemail()"></td>
 				  </tr>		
 			</table>
 			<c:if test="${!message}">
@@ -148,6 +157,7 @@
 		<form>
 			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" />&nbsp;
 			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" />&nbsp;
+			用户邮箱: <input type="text" name="qry_email" id="qry_email" value="${qry_email}" />&nbsp;
 			<input type="submit" value="查询" />		
 				<table>
 					<tr>

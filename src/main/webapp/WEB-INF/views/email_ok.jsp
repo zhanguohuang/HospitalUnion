@@ -2,10 +2,10 @@
     pageEncoding="utf-8"%>
 <html>
 <head>
-	<link href="css/bootstrap.min.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
 	<title>status</title>
 </head>
 <body>
