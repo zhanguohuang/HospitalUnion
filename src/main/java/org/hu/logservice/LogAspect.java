@@ -41,9 +41,6 @@ public class LogAspect {
 	 */
 	@Before("controllerAspect()")
 	public void deBefore(JoinPoint joinPoint){
-		System.out.println("====前置通知开始====");
-		logger.info("hello");
-	
 		HttpServletRequest request = 
 				((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 		HttpSession session = request.getSession();
