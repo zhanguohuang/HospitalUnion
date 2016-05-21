@@ -6,21 +6,10 @@
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Insert title here</title>
+	<title>status</title>
 </head>
 <body>
-	<form action="/login" method="post">
-		<dl>
-			<dt>User:</dt>
-			<dd><input type="text" name="username" /></dd>
-		</dl>
-		<dl>
-			<dt>Password:</dt>
-			<dd><input type="password" name="password" /></dd>
-		</dl>
-		<dl>
-			<dt colspan="2"><input type="submit" value="Login"></dt>
-		</dl>
-	</form>
+	<label>${message}</label>
+	<a href="alluser">返回</a>
 </body>
 </html>

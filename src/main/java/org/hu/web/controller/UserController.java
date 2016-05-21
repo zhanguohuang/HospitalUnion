@@ -66,8 +66,9 @@ public class UserController {
 	public String addUser(@RequestParam("id") int id,
 			@RequestParam("username") String username,
 			@RequestParam("password") String password,
+			@RequestParam(value="email",required=false,defaultValue="") String email,
 			RedirectAttributes model){
-		User user = new User(id, username, password);
+		User user = new User(id, username, password,email);
 		if(auserdao.get(user.getId()) != null){
 			model.addFlashAttribute("message","此id已经存在,请重新输入");
 			return "redirect:/alluser";		
@@ -88,8 +89,9 @@ public class UserController {
 	@RequestMapping(value="/updateuser", method=RequestMethod.POST)
 	public String update(@RequestParam("id") int id, 
 						@RequestParam("username") String username, 
-						@RequestParam("password") String password){
-		User user = new User(id, username, password);
+						@RequestParam("password") String password,
+						@RequestParam(value="email",required=false,defaultValue="") String email){
+		User user = new User(id, username, password,email);
 		auserdao.update(user);
 		return "redirect:/alluser";
 	}

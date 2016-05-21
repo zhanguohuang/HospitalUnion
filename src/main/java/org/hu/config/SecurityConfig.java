@@ -21,7 +21,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http.authorizeRequests()
 		.antMatchers("/deleteuser").hasRole("admin")
 		.anyRequest().permitAll()
-		.and().formLogin().and().httpBasic();
+		.and().formLogin().and().httpBasic()
+		.and().csrf().disable();
 	}
 	
 	@Override

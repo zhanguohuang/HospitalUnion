@@ -4,8 +4,10 @@
 <!doctype html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 <style>
 	td{
@@ -128,14 +130,17 @@
 				  <tr>
 				    <td width="120"><div align="right">Password:&nbsp;</div></td>
 					<td width="120"><input type="password" name="password" id="password"></td>
-				  </tr>			
+				  </tr>		
+				  <tr>
+				    <td width="120"><div align="right">Email:&nbsp;</div></td>
+					<td width="120"><input type="text" name="email" id="email"></td>
+				  </tr>		
 			</table>
 			<c:if test="${!message}">
 				  <div id="msg"><c:out value="${message}" /></div>
 			</c:if>
 				<input type="submit"value="新增"/>
 				<input type="button" id="ajaxadd" value="使用ajax增加user"/>
-				<input type="reset"/>
 	  </form>
 	</div>
 	
@@ -150,8 +155,10 @@
 						<td width="150px">${userList.id}</td>
 						<td width="150px">${userList.username}</td>
 						<td width="150px">${userList.password}</td>
-						<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a></td>
-						<td width="150px"><a href="deleteuser?id=${userList.id}">删除</a></td>
+						<td width="150px">${userList.email}</td>
+						<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a>&nbsp;</td>
+						<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
+						<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
 					</tr>
 				</table>
 			</c:forEach>

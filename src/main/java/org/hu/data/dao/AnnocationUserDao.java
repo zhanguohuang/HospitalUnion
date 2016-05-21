@@ -13,13 +13,13 @@ import org.hu.annocation.SystemControllerLog;
 import org.hu.data.model.User;
 
 public interface AnnocationUserDao {
-	@Insert("insert into user(id, username, password) values(#{id}, #{username}, #{password})")
+	@Insert("insert into user(id, username, password,email) values(#{id}, #{username}, #{password},#{email})")
 	public int add(User user);
 	
 	@Select("select * from user where id=#{id}")
 	public User get(int id);
 	
-	@Update("update user set username=#{username}, password=#{password} where id=#{id}")
+	@Update("update user set username=#{username}, password=#{password},email=#{email} where id=#{id}")
 	public void update(User user);
 	
 	@Delete("delete from user where id=#{id}")

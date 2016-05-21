@@ -54,7 +54,7 @@ public class LogAspect {
 			System.out.println("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
 			System.out.println("方法描述:" + getControllerMethodDescription(joinPoint));
 			System.out.println("请求IP:" + ip);
-			System.out.println("前置通知结束");
+			System.out.println("====前置通知结束====");
 		}catch(Exception e){
 			logger.error("==前置通知异常==");
 			logger.error("异常信息:",e.getMessage());
@@ -64,8 +64,7 @@ public class LogAspect {
 
 	@After("controllerAspect()")
 	public void deAfter(JoinPoint joinPoint){
-		System.out.println("====后置通知开始====");
-		logger.info("baibai");
+		System.out.println("====后置通知====");
 	}
 	public static String getControllerMethodDescription(JoinPoint joinPoint) throws Exception{
 		String targetName = joinPoint.getTarget().getClass().getName();

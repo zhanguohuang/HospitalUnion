@@ -3,6 +3,7 @@ create table user(
 	id int not null,
 	username varchar(20),
 	password varchar(20),
+	email varchar(50),
 	primary key(id)
 );
 
