@@ -7,8 +7,18 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<p>hello</p>
-	<a href="alluser">显示所有的User</a>
-	<a href="mail">发个邮件玩玩</a>
+	<form action="/login" method="post">
+		<dl>
+			<dt>User:</dt>
+			<dd><input type="text" name="username" /></dd>
+		</dl>
+		<dl>
+			<dt>Password:</dt>
+			<dd><input type="password" name="password" /></dd>
+		</dl>
+		<dl>
+			<dt colspan="2"><input type="submit" value="Login"></dt>
+		</dl>
+	</form>
 </body>
 </html>

@@ -2,14 +2,9 @@
     pageEncoding="utf-8"%>
 <html>
 <head>
-<script type="text/javascript" src="js/jquery-1.12.3.js"></script>
+<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
-<script type="text/javascript">
-	$(document).ready(function(){
-		alert("hello js");
-	})
-</script>
 </head>
 <body>
 	<div align="center">
