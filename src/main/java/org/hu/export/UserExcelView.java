@@ -26,9 +26,11 @@ public class UserExcelView extends AbstractExcelView{
 		HSSFCell cell = getCell(sheet,0,0);
 		setText(cell,"ID");
 		cell = getCell(sheet,0,1);
-		setText(cell,"姓名");
+		setText(cell,"用户名称");
 		cell = getCell(sheet,0,2);
-		setText(cell,"密码");
+		setText(cell,"用户密码");
+		cell = getCell(sheet,0,3);
+		setText(cell,"邮箱");
 		for(int i=0;i<userList.size();i++){
 			User user = userList.get(i);
 			HSSFRow row = sheet.createRow(i+1);
