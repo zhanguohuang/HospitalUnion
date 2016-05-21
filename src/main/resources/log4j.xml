@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="spittr">
+	<logger name="hu">
 		<level value="info" />
 	</logger>
 	
