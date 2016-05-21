@@ -91,7 +91,7 @@ public class UserController {
 						@RequestParam("username") String username, 
 						@RequestParam("password") String password,
 						@RequestParam(value="email",required=false,defaultValue="") String email){
-		User user = new User(id, username, password,email);
+		User user = new User(id, username, password, email);
 		auserdao.update(user);
 		return "redirect:/alluser";
 	}
