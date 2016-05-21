@@ -35,6 +35,7 @@ public class UserExcelView extends AbstractExcelView{
 			row.createCell(0).setCellValue(user.getId());
 			row.createCell(1).setCellValue(user.getUsername());
 			row.createCell(2).setCellValue(user.getPassword());
+			row.createCell(2).setCellValue(user.getEmail());
 		}
 		String fileName = "user.xls";
 		response.setContentType("application/vnd.ms-excel");

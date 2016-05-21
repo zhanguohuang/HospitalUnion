@@ -148,9 +148,16 @@
 		<form>
 			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" />&nbsp;
 			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" />&nbsp;
-			<input type="submit" value="查询" />
-			<c:forEach items="${userList}" var="userList">
+			<input type="submit" value="查询" />		
 				<table>
+					<tr>
+						<td>用户ID</td>
+						<td>用户名称</td>
+						<td>用户密码</td>
+						<td>用户邮箱</td>
+						<td colspan="3">操作</td>
+					</tr>
+				<c:forEach items="${userList}" var="userList">
 					<tr>
 						<td width="150px">${userList.id}</td>
 						<td width="150px">${userList.username}</td>
@@ -160,8 +167,9 @@
 						<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
 						<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
 					</tr>
+				</c:forEach>	
 				</table>
-			</c:forEach>
+
 			<div id="paging">	
 				每页显示<input type="text" id="pagesize" name="pagesize" value="${pagesize}">条&nbsp;
 				总共有<input type="button" id="pagetotal" value="${pagetotal}" />条数据&nbsp;
