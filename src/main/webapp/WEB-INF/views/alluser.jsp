@@ -19,6 +19,7 @@
 		for(var i=1;i<=pagesum;i++){
 			var a = $("<a></a>");
 			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize);
+			a.attr("class","btn btn-default");
 			a.html(i);
 			a.css("margin-right","10px");
 			$("#paging").before(a);
@@ -111,8 +112,8 @@
 							<th colspan="3">操作</th>
 						</tr>
 					</thead>
-				<c:forEach items="${userList}" var="userList">
 					<tbody>
+					<c:forEach items="${userList}" var="userList">
 						<tr>
 							<td width="150px">${userList.id}</td>
 							<td width="150px">${userList.username}</td>
@@ -121,9 +122,9 @@
 							<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a>&nbsp;</td>
 							<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
 							<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
-						</tr>
+						</tr>			
+					</c:forEach>	
 					</tbody>
-				</c:forEach>	
 				</table>
 
 			<div id="paging">	
