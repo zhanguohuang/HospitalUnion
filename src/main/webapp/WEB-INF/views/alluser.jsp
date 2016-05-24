@@ -4,43 +4,12 @@
 <!doctype html>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
-<style>
-	td{
-		border-style:10px solid ;
-	}
-	div#rightbanner{
-		/* 这里对整个右侧的float盒模型进行定义 */
-		/* 盒模型 */
-		/* padding:3%; */
-		border:2px dashed black;
-		/* width: 5%; */
-		/* 浮动 */
-		float:right;
-		/* 背景颜色 */
-		background-color: write;
-		/* 字体大小，居中，行距 */
-		font-size: 1.2em;
-		text-align: center;
-		line-height: 1.4em;
-		/* 字体颜色  */
-		color: black;
-	}
-	div#rightbanner_h2{
-		/* 这里对右侧的标题h2进行定义 */
-		
-	}
-	div#rightbanner_p{
-		/* 这里对右侧的正文p进行定义 */
-	}
-	#msg{
-		color: red;
-	}
-</style>
 </head>
 <script type="text/javascript">
 	$(document).ready(function(){
@@ -122,72 +91,82 @@
 		}
 	}
 </script>	
-<body>
-	
-	<div id="rightbanner" >	
-	<h2 id="rightbanner_h2" >新增User</h2>
-	<form method="post" action="/HospitalUnion/adduser">
-		    <table>			
-				  <tr>	
-				    <td width="120"><div align="right">ID:&nbsp;</div></td>
-					<td width="120"><input type="text" name="id" id="id"></td>
-				  </tr>
-				  <tr>
-				    <td width="120"><div align="right">User Name:&nbsp;</div></td>
-					<td width="120"><input type="text" name="username" id="username"></td>
-				  </tr>
-				  <tr>
-				    <td width="120"><div align="right">Password:&nbsp;</div></td>
-					<td width="120"><input type="password" name="password" id="password"></td>
-				  </tr>		
-				  <tr>
-				    <td width="120"><div align="right">Email:&nbsp;</div></td>
-					<td width="120"><input type="text" name="email" id="email" onblur="checkemail()"></td>
-				  </tr>		
-			</table>
-			<c:if test="${!message}">
-				  <div id="msg"><c:out value="${message}" /></div>
-			</c:if>
-				<input type="submit"value="新增"/>
-				<input type="button" id="ajaxadd" value="使用ajax增加user"/>
-	  </form>
-	</div>
-	
+<body>	
+<div class="container" >	
+	<div class="col-xs-8">
 	<div id="query">
-		<form>
-			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" />&nbsp;
-			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" />&nbsp;
-			用户邮箱: <input type="text" name="qry_email" id="qry_email" value="${qry_email}" />&nbsp;
-			<input type="submit" value="查询" />		
-				<table>
-					<tr>
-						<td>用户ID</td>
-						<td>用户名称</td>
-						<td>用户密码</td>
-						<td>用户邮箱</td>
-						<td colspan="3">操作</td>
-					</tr>
+		<form class="form-inline" role="form">
+			用户id: <input type="text" name="qry_id" id="qry_id" value="${qry_id}" class="form-control" />&nbsp;
+			用户名称: <input type="text" name="qry_username" id="qry_username" value="${qry_username}" class="form-control" />&nbsp;<br/>
+			用户邮箱: <input type="text" name="qry_email" id="qry_email" value="${qry_email}" class="form-control" />&nbsp;
+			<input type="submit" value="查询" class="btn btn-default" />		
+				<table class="table table-striped table-bordered table-hover table-condensed">
+					<caption>显示用户</caption>
+					<thead>
+						<tr>
+							<th>用户ID</th>
+							<th>用户名称</th>
+							<th>用户密码</th>
+							<th>用户邮箱</th>
+							<th colspan="3">操作</th>
+						</tr>
+					</thead>
 				<c:forEach items="${userList}" var="userList">
-					<tr>
-						<td width="150px">${userList.id}</td>
-						<td width="150px">${userList.username}</td>
-						<td width="150px">${userList.password}</td>
-						<td width="150px">${userList.email}</td>
-						<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a>&nbsp;</td>
-						<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
-						<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
-					</tr>
+					<tbody>
+						<tr>
+							<td width="150px">${userList.id}</td>
+							<td width="150px">${userList.username}</td>
+							<td width="150px">${userList.password}</td>
+							<td width="150px">${userList.email}</td>
+							<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a>&nbsp;</td>
+							<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
+							<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
+						</tr>
+					</tbody>
 				</c:forEach>	
 				</table>
 
 			<div id="paging">	
 				每页显示<input type="text" id="pagesize" name="pagesize" value="${pagesize}">条&nbsp;
-				总共有<input type="button" id="pagetotal" value="${pagetotal}" />条数据&nbsp;
+				总共有<input type="button" id="pagetotal" value="${pagetotal}" class="btn btn-default"/>条数据&nbsp;
 			</div>
 		</form> 
 	</div>
-	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}">导出Excel</a><br/>
-	<a href="<%=request.getContextPath()%>">返回首页</a>
-	<p id="click">点击测试ajax</p>
+	
+	<a href="export?qry_id=${qry_id}&qry_username=${qry_username}" class="btn btn-default">导出Excel</a><br/>
+	<a href="<%=request.getContextPath()%>" class="btn btn-default">返回首页</a>
+	<p id="click" class="btn btn-default">点击测试ajax</p>
+	</div>
+	<div class="col-xs-4">
+	<h2>新增User</h2>
+		<form method="post" action="/HospitalUnion/adduser">
+		    <table class="table table-striped table-bordered table-hover table-condensed">			
+				  <tr>	
+				    <th width="120"><div align="right">ID:&nbsp;</div></th>
+					<td width="120"><input type="text" name="id" id="id"></td>
+				  </tr>
+				  <tr>
+				    <th width="120"><div align="right">User Name:&nbsp;</div></th>
+					<td width="120"><input type="text" name="username" id="username"></td>
+				  </tr>
+				  <tr>
+				    <th width="120"><div align="right">Password:&nbsp;</div></th>
+					<td width="120"><input type="password" name="password" id="password"></td>
+				  </tr>		
+				  <tr>
+				    <th width="120"><div align="right">Email:&nbsp;</div></th>
+					<td width="120"><input type="text" name="email" id="email" onblur="checkemail()"></td>
+				  </tr>	
+				  <tr class="danger" >					
+						<td colspan="2" style="padding:0px">${message}</td>
+				  </tr>	
+				  <tr>
+				  	<td align="right"><input type="submit" value="新增" class="btn btn-default" /></td>
+					<td><input type="button" id="ajaxadd" value="使用ajax增加user" class="btn btn-default" /></td>
+				  </tr>
+			</table>
+	  </form>
+	</div>	
+</div>	
 </body>
 </html>

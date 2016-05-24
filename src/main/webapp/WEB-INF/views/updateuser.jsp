@@ -2,11 +2,12 @@
     pageEncoding="utf-8"%>
 <html>
 <head>
+	<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
-	<title>Insert title here</title>
+	<title>修改user</title>
 <script>
 	function checkemail(){
 		var email = $("#email").val();
@@ -18,29 +19,38 @@
 </script>
 </head>
 <body>
-	<div align="center">
-		需要修改的User为:<br/>
-		<form action="" method="post">
-		<table>
-			<tr>
-				<td>id :</td>
-				<td><input type="text" name="id" value="${user.id}" readonly /></td>
-			</tr>
-			<tr>
-				<td>username :</td>
-				<td><input type="text" name="username" value="${user.username}" /></td>
-			</tr>
-			<tr>
-				<td>password :</td>
-				<td><input type="text" name="password" value="${user.password}" /></td>
-			</tr>	
-			<tr>
-				<td>email :</td>
-				<td><input type="text" name="email" id="email" value="${user.email}" onblur="checkemail()"/></td>
-			</tr>		
-		</table>
-			<input type="submit" value="确认修改">
+<div class="container">
+	<div class="center-block">
+		<form action="" method="post" class="form-horizontal" role="form">
+		<div class="form-group">
+			<label class="col-xs-1 control-label">ID:</label>
+			<div class="col-xs-2">
+         		<input type="text" name="id" value="${user.id}" readonly class="form-control" >
+      		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-1 control-label">Username:</label>
+			<div class="col-xs-2">
+         		<input type="text" name="username" value="${user.username}" class="form-control" placeholder="请输入名字">
+      		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-1 control-label">Password:</label>
+			<div class="col-xs-2">
+         		<input type="password" name="password" value="${user.password}" class="form-control" placeholder="请输入密码">
+      		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-1 control-label">Email</label>
+			<div class="col-xs-2">
+         		<input type="text" name="email" id="email" value="${user.email}" onblur="checkemail()" class="form-control" placeholder="请输入邮箱">
+      		</div>
+		</div>
+		<div class="form-group col-xs-3 col-md-push-1">
+			<input type="submit" class="btn btn-default" value="确认修改">
+		</div>	
 		</form>
-	</div>	
+	</div>
+</div>		
 </body>
 </html>
