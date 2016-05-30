@@ -20,7 +20,7 @@
 </head>
 <body>
 <div class="container">
-	<div class="center-block">
+	<div class="col-xs-12 col-md-push-4">
 		<form action="" method="post" class="form-horizontal" role="form">
 		<div class="form-group">
 			<label class="col-xs-1 control-label">ID:</label>
@@ -51,6 +51,6 @@
 		</div>	
 		</form>
 	</div>
-</div>		
+</div>	
 </body>
 </html>
