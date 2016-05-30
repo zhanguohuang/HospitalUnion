@@ -15,10 +15,14 @@
 	$(document).ready(function(){
 		var pagetotal = $("#pagetotal").val();
 		var pagesize = $("#pagesize").val();
+		var qry_id = $("#qry_id").val();
+		var qry_username = $("#qry_username").val();
+		var qry_email = $("#qry_email").val();	
 		var pagesum = Math.ceil(pagetotal/pagesize);
 		for(var i=1;i<=pagesum;i++){
 			var a = $("<a></a>");
-			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize);
+			a.attr("href","alluser?currentpage="+i+"&pagesize="+pagesize+"&qry_id="+
+					qry_id+"&qry_username="+qry_username+"&qry_email="+qry_email);
 			a.attr("class","btn btn-default");
 			a.html(i);
 			a.css("margin-right","10px");
@@ -119,9 +123,9 @@
 							<td width="150px">${userList.username}</td>
 							<td width="150px">${userList.password}</td>
 							<td width="150px">${userList.email}</td>
-							<td><a href="updateuser?id=${userList.id}" title="可修改任意字段">修改</a>&nbsp;</td>
-							<td><a href="deleteuser?id=${userList.id}">删除</a>&nbsp;</td>
-							<td><a href="email?id=${userList.id}">发邮件</a>&nbsp;</td>
+							<td><a href="updateuser?id=${userList.id}" title="修改"><span class="glyphicon glyphicon-pencil" ></span></a>&nbsp;</td>
+							<td><a href="deleteuser?id=${userList.id}" title="删除"><span class="glyphicon glyphicon-remove" ></span></a>&nbsp;</td>
+							<td><a href="email?id=${userList.id}" title="发邮箱"><span class="glyphicon glyphicon-envelope" ></span></a>&nbsp;</td>
 						</tr>			
 					</c:forEach>	
 					</tbody>
