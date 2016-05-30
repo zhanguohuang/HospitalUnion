@@ -6,10 +6,12 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.ResultMap;
+import org.apache.ibatis.annotations.ResultType;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.type.JdbcType;
-import org.hu.annocation.SystemControllerLog;
 import org.hu.data.model.User;
 
 public interface AnnocationUserDao {
@@ -30,6 +32,12 @@ public interface AnnocationUserDao {
 
 	@Select("select * from user where 1=1 ${sb}")
 	public List<User> getCount(Map map);
+	
+	//单列查询的方法
+	@Select("select count(*) from user")
+	@Result(column="count(*)",javaType=Integer.class)
+	public int count();
+	
 	
 //	@Select("select count(*) from user")
 //	public List getCount();
