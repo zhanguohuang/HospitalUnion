@@ -21,7 +21,7 @@
 	function md5password(){
 		var username = $("#username").val();
 		var simplepassword = $("#simplepassword").val();
-		$("#password").val($.md5(username+'&'+simplepassword));
+		$("#password").val($.md5(username+'&'+simplepassword)); 
 	}
 </script>
 </head>
