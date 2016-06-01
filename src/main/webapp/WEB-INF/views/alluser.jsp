@@ -9,6 +9,7 @@
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-md5.js"></script>
 <title>Insert title here</title>
 </head>
 <script type="text/javascript">
@@ -95,6 +96,12 @@
 			alert("输入的邮箱格式不对，请重新输入");
 		}
 	}
+	
+	function md5password(){
+		var username = $("#username").val();
+		var simplepassword = $("#simplepassword").val();
+		$("#password").val($.md5(username+'&'+simplepassword));
+	}
 </script>	
 <body>	
 <div class="container" >	
@@ -152,11 +159,11 @@
 				  </tr>
 				  <tr>
 				    <th width="120"><div align="right">User Name:&nbsp;</div></th>
-					<td width="120"><input type="text" name="username" id="username"></td>
+					<td width="120"><input type="text" name="username" id="username" onblur="md5password();"></td>
 				  </tr>
 				  <tr>
 				    <th width="120"><div align="right">Password:&nbsp;</div></th>
-					<td width="120"><input type="password" name="password" id="password"></td>
+					<td width="120"><input type="password" id="simplepassword" onblur="md5password();"></td>
 				  </tr>		
 				  <tr>
 				    <th width="120"><div align="right">Email:&nbsp;</div></th>
@@ -170,6 +177,7 @@
 					<td><input type="button" id="ajaxadd" value="使用ajax增加user" class="btn btn-default" /></td>
 				  </tr>
 			</table>
+			<input type="hidden" name="password" id="password" value=""/>
 	  </form>
 	</div>	
 </div>	

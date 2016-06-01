@@ -15,6 +15,8 @@ public class TestSelectAll {
 		ApplicationContext ctx = 
 				new AnnotationConfigApplicationContext(RootConfig.class);
 		AnnocationUserDao auserdao = (AnnocationUserDao) ctx.getBean("annocationUserDao");
+		int i = auserdao.count();
+		System.out.println(i);
 		//List<User> list = auserdao.getCount(map);
 //		for(User user : list){
 //			System.out.println(user);

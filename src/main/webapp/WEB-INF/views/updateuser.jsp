@@ -7,6 +7,7 @@
 	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-md5.js"></script>
 	<title>修改user</title>
 <script>
 	function checkemail(){
@@ -15,6 +16,12 @@
 		if(!regex.test(email)){
 			alert("输入的邮箱格式不对，请重新输入");
 		}
+	}
+	
+	function md5password(){
+		var username = $("#username").val();
+		var simplepassword = $("#simplepassword").val();
+		$("#password").val($.md5(username+'&'+simplepassword));
 	}
 </script>
 </head>
@@ -31,13 +38,13 @@
 		<div class="form-group">
 			<label class="col-xs-1 control-label">Username:</label>
 			<div class="col-xs-2">
-         		<input type="text" name="username" value="${user.username}" class="form-control" placeholder="请输入名字">
+         		<input type="text" name="username" value="${user.username}" onblur="md5password();" class="form-control" placeholder="请输入名字">
       		</div>
 		</div>
 		<div class="form-group">
 			<label class="col-xs-1 control-label">Password:</label>
 			<div class="col-xs-2">
-         		<input type="password" name="password" value="${user.password}" class="form-control" placeholder="请输入密码">
+         		<input type="password" id="simplepassword" value="${user.password}" onblur="md5password();" class="form-control" placeholder="请输入密码">
       		</div>
 		</div>
 		<div class="form-group">
@@ -49,6 +56,7 @@
 		<div class="form-group col-xs-3 col-md-push-1">
 			<input type="submit" class="btn btn-default" value="确认修改">
 		</div>	
+		<input type="hidden" name="password" id="password" value="" />
 		</form>
 	</div>
 </div>	

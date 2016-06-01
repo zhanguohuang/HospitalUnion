@@ -27,4 +27,7 @@ public class MD5 {
 		}
 		return sign.toString();
 	}
+//	public static void main(String[] args) throws Exception{
+//		System.out.println(MD5Sign("6&6"));
+//	}
 }
