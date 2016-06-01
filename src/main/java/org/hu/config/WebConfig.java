@@ -63,9 +63,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 			return new BeanNameViewResolver();        //以bean的形式查找视图
 		}
 		
-		@Bean
-		public View alluser(){
-			return new MappingJackson2JsonView();    //将alluser定义为json视图
-		}
+//		@Bean
+//		public View alluser(){
+//			return new MappingJackson2JsonView();    //将alluser定义为json视图
+//		}
 	}
 }
