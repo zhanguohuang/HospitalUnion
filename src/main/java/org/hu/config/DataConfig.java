@@ -23,6 +23,7 @@ public class DataConfig {
 	@Bean
 	public DataSource dataSource(){
 		BasicDataSource dataSource = new BasicDataSource();
+		//dataSource.setUrl(env.getProperty("db.url"));
 		dataSource.setUrl(env.getProperty("db.url"));
 		dataSource.setDriverClassName(env.getProperty("db.driver"));
 		dataSource.setUsername(env.getProperty("db.username"));

@@ -27,7 +27,7 @@ public class MD5 {
 		}
 		return sign.toString();
 	}
-//	public static void main(String[] args) throws Exception{
-//		System.out.println(MD5Sign("6&6"));
-//	}
+	public static void main(String[] args) throws Exception{
+		System.out.println(MD5Sign("00000000000334&M&CZ20160601155609393&‘⁄œﬂ≥‰÷µ&100&20160601&20102&01&http://payy.wzmedia.cn/api/payinterface/hrrechargeserver&84EgJ4eCcPfr"));
+	}
 }
