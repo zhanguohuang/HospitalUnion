@@ -11,18 +11,12 @@
 </head>
 <body>
 <div class="container">
-	<form action="/login" method="post">
-		<dl>
-			<dt>User:</dt>
-			<dd><input type="text" name="username" /></dd>
-		</dl>
-		<dl>
-			<dt>Password:</dt>
-			<dd><input type="password" name="password" /></dd>
-		</dl>
-		<dl>
-			<dt colspan="2"><input type="submit" value="Login"></dt>
-		</dl>
+	<form name='f' action='/HospitalUnion/login' method='POST'>
+	 <table>
+	    <tr><td>User:</td><td><input type='text' name='username' value=''></td></tr>
+	    <tr><td>Password:</td><td><input type='password' name='password'/></td></tr>
+	    <tr><td colspan='2'><input name="submit" type="submit" value="Login"/></td></tr>
+	  </table>
 	</form>
 </div>	
 </body>

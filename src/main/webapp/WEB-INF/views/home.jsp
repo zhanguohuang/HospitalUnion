@@ -13,6 +13,7 @@
 <div class="container">
 	<p>hello</p>
 	<a href="alluser">显示所有的User</a>
+	<a href="chatroom">进入聊天室</a>
 </div>	
 </body>
 </html>

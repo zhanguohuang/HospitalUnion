@@ -20,11 +20,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests()
 		.antMatchers("/deleteuser").hasRole("admin")
+		.antMatchers("/chatroom").hasRole("user")
 		.anyRequest().permitAll()
-		.and().formLogin().and().httpBasic()
+		.and().formLogin().loginPage("/login")
+		.and().httpBasic()
 		.and().csrf().disable();
 	}
-	
+	//.and().formLogin()
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		auth.jdbcAuthentication().dataSource(dataSource)

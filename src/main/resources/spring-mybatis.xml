@@ -26,4 +26,10 @@
     	<property name="mapperInterface" value="org.hu.data.dao.AnnocationUserDao" />
     	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
     </bean>
+    
+    <bean id="chatinfoDao" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    	<property name="mapperInterface" value="org.hu.data.dao.ChatinfoDao" />
+    	<property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
 </beans> 
