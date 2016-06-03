@@ -14,6 +14,6 @@ public interface ChatinfoDao {
 	@Insert("insert into chatinfo(username,message,create_time) values(#{username},#{message},now())")
 	public void add(Chatinfo chatinfo);
 	
-	@Select("select * from chatinfo where create_time>${lasttime}")
+	@Select("select * from chatinfo where username!=#{username} and create_time>#{lasttime}")
 	public List<Chatinfo> getCurrentChatinfo(Map map);
 }

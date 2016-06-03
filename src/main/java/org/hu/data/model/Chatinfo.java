@@ -33,6 +33,6 @@ public class Chatinfo {
 	};
 	
 	public String toString(){
-		return "id="+id+"; username="+username+"; message+"+message+"; create_time="+create_time+";";
+		return "id="+id+"; username="+username+"; message="+message+"; create_time="+create_time+";";
 	}
 }

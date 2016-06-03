@@ -33,10 +33,9 @@ public class ChatController {
 		String username = request.getUserPrincipal().getName();
 		List<Chatinfo> list = chatinfodao.getAll();
 		Collections.reverse(list);
-		String lasttime = list.get(0).getCreate_time().substring(0, 19);
 		model.addAttribute("username", username);
 		model.addAttribute("chatinfolist", list);
-		model.addAttribute("lasttime",lasttime);
+		model.addAttribute("lasttime",list.get(0).getCreate_time());
 		return "chatroom";
 	}
 	
@@ -58,12 +57,13 @@ public class ChatController {
 	@RequestMapping(value="/getCurrentChatinfo",method=RequestMethod.POST)
 	public @ResponseBody List<Chatinfo> 
 		getCurrentChatinfo(@RequestBody Chatinfo chatinfo){
-		System.out.println(chatinfo);
 		Map map = new HashMap();
 		map.put("username", chatinfo.getUsername());
 		map.put("lasttime", chatinfo.getCreate_time());
 		List<Chatinfo> list = chatinfodao.getCurrentChatinfo(map);
 		return list;
 	}
+	
+
 	
 }
