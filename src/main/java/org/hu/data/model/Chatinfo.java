@@ -5,7 +5,7 @@ public class Chatinfo {
 	private int id;
 	private String username;
 	private String message;
-	private String createtime;
+	private String create_time;
 	public Chatinfo(){}
 	public int getId() {
 		return id;
@@ -25,10 +25,14 @@ public class Chatinfo {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public String getCreatetime() {
-		return createtime;
+	public String getCreate_time() {
+		return create_time;
 	}
-	public void setCreatetime(String createtime) {
-		this.createtime = createtime;
+	public void setCreate_time(String create_time) {
+		this.create_time = create_time;
 	};
+	
+	public String toString(){
+		return "id="+id+"; username="+username+"; message+"+message+"; create_time="+create_time+";";
+	}
 }
