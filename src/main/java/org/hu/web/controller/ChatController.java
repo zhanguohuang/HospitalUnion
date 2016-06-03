@@ -35,7 +35,11 @@ public class ChatController {
 		Collections.reverse(list);
 		model.addAttribute("username", username);
 		model.addAttribute("chatinfolist", list);
-		model.addAttribute("lasttime",list.get(0).getCreate_time());
+		if(list.size()>0){
+			model.addAttribute("lasttime",list.get(0).getCreate_time());
+		}else{
+			model.addAttribute("lasttime","0000-00-00 00:00:00.0");
+		}		
 		return "chatroom";
 	}
 	

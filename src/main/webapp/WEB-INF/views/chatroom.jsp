@@ -11,10 +11,14 @@
 <title>Welcome come to here!</title>
 <script>
 	$(document).ready(function(){
-		var window = $("#window");
-		var content = $("#content");
-		window.scrollTop(content.height());
+		scrollToButtom();
+		self.setInterval("getCurrentChatinfo()",500)
 	})
+	
+	$(document).keypress(function(key) {  
+		if(key.which == 13)  
+			sendMessage(); 
+	}); 
 	
 	function getCurrentChatinfo(){
 		var username = $("#username").val();
