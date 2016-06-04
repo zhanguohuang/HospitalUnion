@@ -13,6 +13,7 @@ import org.hu.annocation.SystemControllerLog;
 import org.hu.data.dao.AnnocationUserDao;
 import org.hu.data.dao.UserinfoDao;
 import org.hu.data.model.User;
+import org.hu.data.model.Userinfo;
 import org.hu.export.UserExcelView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,6 +28,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sun.management.VMOption.Origin;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
 @Controller
@@ -103,9 +105,20 @@ public class UserController {
 						@RequestParam(value="email",required=false,defaultValue="") String email,
 						@RequestPart(value="userimage",required=false) MultipartFile userimage,
 						HttpServletRequest request) throws Exception{
-		System.out.println(request.getRealPath("/updateuser"));
-		System.out.println(request.getContextPath());
-		//userimage.transferTo(new File("C:\\development\\"+userimage.getName()));
+		//System.out.println(request.getContextPath());
+		if(!userimage.getOriginalFilename().equals("")){
+			String imagepath = "C:\\development\\workspace\\HospitalUnion\\src\\main\\webapp\\image\\";
+			String originName = userimage.getOriginalFilename();
+			String fileNameSuffix = originName.substring(originName.indexOf("."),originName.length());
+			//文件的名称保存方式为 id_username_image.jepg如1_zhanguohuang_image.jpg
+			userimage.transferTo(new File(imagepath + id + "_" + username + "_image" + fileNameSuffix));
+			//image_url的保存方式为 image/id_username_image.jepg 用于获取此文件
+			String image_url = "image/" + id + "_" + username + "_image" + fileNameSuffix;
+			Userinfo userinfo = new Userinfo();
+			userinfo.setUsername(username);
+			userinfo.setImage_url(image_url);
+			userinfodao.add(userinfo);
+		}			
 		User user = new User(id, username, password, email);
 		auserdao.update(user);
 		return "redirect:/alluser";
