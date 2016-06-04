@@ -1,12 +1,17 @@
 package org.hu.web.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.hu.annocation.SystemControllerLog;
 import org.hu.data.dao.AnnocationUserDao;
+import org.hu.data.dao.UserinfoDao;
 import org.hu.data.model.User;
 import org.hu.export.UserExcelView;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -26,6 +33,9 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 public class UserController {
 	@Autowired
 	AnnocationUserDao auserdao;
+	
+	@Autowired
+	UserinfoDao userinfodao;
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
 	//@SystemControllerLog(description = "列出所有的user")
@@ -90,7 +100,12 @@ public class UserController {
 	public String update(@RequestParam("id") int id, 
 						@RequestParam("username") String username, 
 						@RequestParam("password") String password,
-						@RequestParam(value="email",required=false,defaultValue="") String email){
+						@RequestParam(value="email",required=false,defaultValue="") String email,
+						@RequestPart(value="userimage",required=false) MultipartFile userimage,
+						HttpServletRequest request) throws Exception{
+		System.out.println(request.getRealPath("/updateuser"));
+		System.out.println(request.getContextPath());
+		//userimage.transferTo(new File("C:\\development\\"+userimage.getName()));
 		User user = new User(id, username, password, email);
 		auserdao.update(user);
 		return "redirect:/alluser";

@@ -1,3 +1,4 @@
+drop database if exists test;
 create database test;
 use test;
 create table user(
@@ -8,6 +9,15 @@ create table user(
 	primary key(id)
 );
 insert into user(id,username,password,email) values(1,'zhanguohuang','QQQwwe125','779134714@qq.com');
+
+create table userinfo(
+	id int not null auto_increment,
+	username varchar(50) not null,
+	login_failure_count int default 0,
+	image_url varchar(50),
+	ip int,
+	primary key(id,username)
+);
 
 create table limuseinf(
 	username varchar(50) not null,

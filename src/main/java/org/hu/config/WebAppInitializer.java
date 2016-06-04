@@ -1,6 +1,8 @@
 package org.hu.config;
 
 import javax.servlet.Filter;
+import javax.servlet.MultipartConfigElement;
+import javax.servlet.ServletRegistration.Dynamic;
 
 import org.hu.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
@@ -28,5 +30,12 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
 	@Override
 	protected Filter[] getServletFilters() {
 		return new Filter[] {new CharacterEncodingFilter()};
+	}
+	
+	//…Ë÷√multipart
+	@Override
+	protected void customizeRegistration(Dynamic registration){
+		registration.setMultipartConfig(new MultipartConfigElement("C:\\development\\workspace\\buffer\\",
+			2097152, 4194304,0));
 	}
 }

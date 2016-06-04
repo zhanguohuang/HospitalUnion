@@ -1,5 +1,7 @@
 package org.hu.config;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -11,6 +13,8 @@ import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.core.env.Environment;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 
 /*
  * bean¹¤³§
@@ -39,5 +43,10 @@ public class RootConfig {
 		mailSender.setUsername(env.getProperty("email.username"));
 		mailSender.setPassword(env.getProperty("email.password"));
 		return mailSender;
+	}
+	
+	@Bean
+	public MultipartResolver multipartResolver() throws IOException{
+		return new StandardServletMultipartResolver();
 	}
 }

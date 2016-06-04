@@ -28,7 +28,7 @@
 <body>
 <div class="container">
 	<div class="col-xs-12 col-md-push-4">
-		<form action="" method="post" class="form-horizontal" role="form">
+		<form action="updateuser" enctype="multipart/form-data" method="post" class="form-horizontal" role="form">
 		<div class="form-group">
 			<label class="col-xs-1 control-label">ID:</label>
 			<div class="col-xs-2">
@@ -51,6 +51,12 @@
 			<label class="col-xs-1 control-label">Email</label>
 			<div class="col-xs-2">
          		<input type="text" name="email" id="email" value="${user.email}" onblur="checkemail()" class="form-control" placeholder="请输入邮箱">
+      		</div>
+		</div>
+		<div class="form-group">
+			<label class="col-xs-1 control-label">上传头像</label>
+			<div class="col-xs-2">
+         		<input type="file" name="userimage" id="userimage" class="form-control" placeholder="请上传头像">
       		</div>
 		</div>
 		<div class="form-group col-xs-3 col-md-push-1">
