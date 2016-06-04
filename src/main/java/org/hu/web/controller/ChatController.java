@@ -32,9 +32,11 @@ public class ChatController {
 		//获取登录用户的用户名字
 		String username = request.getUserPrincipal().getName();
 		List<Chatinfo> list = chatinfodao.getAll();
+		String image_url = chatinfodao.getImage_url(username);
 		Collections.reverse(list);
 		model.addAttribute("username", username);
 		model.addAttribute("chatinfolist", list);
+		model.addAttribute("image_url", image_url);
 		if(list.size()>0){
 			model.addAttribute("lasttime",list.get(0).getCreate_time());
 		}else{

@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.hu.annocation.SystemControllerLog;
 import org.hu.data.dao.AnnocationUserDao;
+import org.hu.data.dao.ChatinfoDao;
 import org.hu.data.dao.UserinfoDao;
 import org.hu.data.model.User;
 import org.hu.data.model.Userinfo;
@@ -38,6 +39,9 @@ public class UserController {
 	
 	@Autowired
 	UserinfoDao userinfodao;
+	
+	@Autowired
+	ChatinfoDao chatinfodao;
 	
 	@RequestMapping(value="/alluser", method=RequestMethod.GET)
 	//@SystemControllerLog(description = "列出所有的user")
@@ -87,6 +91,7 @@ public class UserController {
 		}
 		else{
 			auserdao.add(user);
+			chatinfodao.adduserinfo(username);
 		}
 		return "redirect:/alluser";
 	}
@@ -177,6 +182,7 @@ public class UserController {
 	@RequestMapping(value="/ajaxAddUser")
 	public String ajaxAddUser(@RequestBody User user){
 		auserdao.add(user);
+		chatinfodao.adduserinfo(user.getUsername());
 		return "redirect:/alluser";
 	}
 	

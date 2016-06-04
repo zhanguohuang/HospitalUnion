@@ -9,17 +9,7 @@
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 <title>Welcome come to here!</title>
-<script>
-	$(document).ready(function(){
-		scrollToButtom();
-		self.setInterval("getCurrentChatinfo()",500)
-	})
-	
-	$(document).keypress(function(key) {  
-		if(key.which == 13)  
-			sendMessage(); 
-	}); 
-	
+<script>		
 	function getCurrentChatinfo(){
 		var username = $("#username").val();
 		var lasttime = $("#lasttime").val();
@@ -33,18 +23,11 @@
 			data:JSON.stringify(args),
 			success:function(data){
 				for(var i=0;i<data.length;i++){
-					var table = $("#messages");
-					var tr = $("<tr></tr>");
-					var td1 = $("<td></td>");
-					var td2 = $("<td></td>");
 					var username = data[i].username;
 					var create_time = data[i].create_time;
 					var message = data[i].message;
-					td1.html(username+'('+create_time+'):');
-					td2.html(message);
-					tr.append(td1);
-					tr.append(td2);
-					table.append(tr);	
+					var image_url = data[i].image_url;
+					insertleftside(username,message,create_time,image_url);
 				};
 				if(data.length > 0){
 					scrollToButtom();
@@ -52,15 +35,24 @@
 				}			
 			},
 			error:function(){
-				alert("error");
 			}
 		});
 	}
 	
+	function insertleftside(username,message,create_time,image_url){
+		var content = $("#content");
+		var div = $("<div style='float:left'><img src="+image_url+" class='img-circle' height='50' width='50'></div>");
+		content.append(div);
+		div = $("<div style='height:5;float:left;margin-left:5px'><label class='text-muted'>"+create_time+"</label></div><br/>");
+		content.append(div);
+		div = $("<div style='float:left;margin-left:5px'><input type='button' class='btn btn-primary' value="+message+"></div><br/><br/>");
+		content.append(div);
+	}
 
 	function sendMessage(){
 		var username =  $("#username").val();
-		var message = $("#message").val();		
+		var message = $("#message").val();
+		var image_url = $("#image_url").val();
 		var url = "ajaxaddchatinfo";
 		var args = {"username" : username,"message":message};
 		$.ajax({
@@ -70,29 +62,20 @@
 			contentType:"application/json",
 			data:JSON.stringify(args),
 		});
-		var table = $("#messages");
-		var tr = $("<tr></tr>");
-		var td1 = $("<td></td>");
-		var td2 = $("<td></td>");
-		var create_time = getDate();
-		td1.html(username+'('+create_time+'):');
-		td2.html(message);
-		tr.append(td1);
-		tr.append(td2);
-		table.append(tr);
+		insertrightside(username,message,image_url);		
 		scrollToButtom();
 		$("#message").val(null);
 	}
 	
-	function　addinput(){
-		var window = $("#window");
+	function insertrightside(username,message,image_url){
 		var content = $("#content");
-		var input = $("<input></input>");
-		input.attr("type","text");
-		input.attr("value","新增的input");
-		window.append(input);
-		//alert(window.scrollTop());后期给钱就优化的地方，可控制滚动条是否自由滚动
-		window.scrollTop(content.height());
+		var create_time = getDate();
+		var div = $("<div style='float:right'><img src="+image_url+" class='img-circle' height='50' width='50'></div>");
+		content.append(div);
+		div = $("<div style='height:5;float:right;margin-right:5px'><label class='text-muted'>"+create_time+"</label></div><br/>");
+		content.append(div);
+		div = $("<div style='float:right;margin-right:5px'><input type='button' class='btn btn-success' value="+message+"></div><br/><br/>");
+		content.append(div);
 	}
 	
 	function getDate(){	
@@ -111,32 +94,53 @@
 		var window = $("#window");
 		var content = $("#content");
 		window.scrollTop(content.height());
+		//alert(window.scrollTop());后期给钱就优化的地方，可控制滚动条是否自由滚动
 	}
 </script>
 </head>
 <body>
 <div class="container">
-	<div id="window" style="width:70%;height:100px;overflow-x:auto;overflow-y:auto;">
-		<div id="content">
-			<table id="messages">
-				<c:forEach items="${chatinfolist}" var="chatinfo">
-				<tr>
-					<td>${chatinfo.username}(${chatinfo.create_time}):</td>
-					<td>${chatinfo.message}</td>				
-				</tr>				
-				</c:forEach> 
-			</table>
+	<div id="window" style="height:400;overflow-x:auto;overflow-y:auto;" class="col-xs-10 btn btn-default">
+		<div id="content" >
+		<c:forEach items="${chatinfolist}" var="chatinfo">
+			<c:if test="${chatinfo.username ne username}">
+				<div style="float:left"><img src="${chatinfo.image_url}" class="img-circle" height="50" width="50"></div>
+				<div style="height:5;float:left;margin-left:5px"><label class="text-muted">${chatinfo.create_time}</label></div><br/>
+				<div style="float:left;margin-left:5px"><input type="button" class="btn btn-primary" value="${chatinfo.message}"></div>
+				<br/><br/>
+			</c:if>	
+			<c:if test="${chatinfo.username eq username}">
+				<div style="float:right"><img src="${chatinfo.image_url}" class="img-circle" height="50" width="50"></div>
+				<div style="height:5;float:right;margin-right:5px"><label class="text-muted">${chatinfo.create_time}</label></div><br/>
+				<div style="float:right;margin-right:5px"><input type="button" class="btn btn-success" value="${chatinfo.message}"></div>
+				<br/><br/>
+			</c:if>	
+		</c:forEach>
 		</div>
 	</div>
-	<br/>
-	<form action="addmessage" method="post">
-		<input type="text" id="lasttime" name="lasttime" value="${lasttime}" />
-		<input type="text" id="username" value="${username}"/><br/>
-		内容：<textarea name="message" id="message" rows="3" cols="10"></textarea><br/>
-		<input type="button" value="发送" onclick="sendMessage()" />
-	</form>
-	<input type="button" value="点击增加input" onclick="addinput()" />
-	<input type="button" value="点击获取当前聊天" onclick="getCurrentChatinfo()" />
+
+	
+	<div class="col-xs-10" style="margin-top:30px">
+		<textarea name="message" id="message" class="form-control" rows="3"></textarea>
+		<div class="col-xs-2 col-md-push-11" style="margin-top:20px">
+			<input type="submit" class="btn btn-info" onclick="sendMessage()" value="发送">
+		</div>
+	</div>
+
 </div>	
+<input type="hidden" id="lasttime" value="${lasttime}" />
+<input type="hidden" id="username" value="${username}" />
+<input type="hidden" id="image_url" value="${image_url}" />
 </body>
 </html>
+<script>
+	$(document).ready(function(){
+		scrollToButtom();
+		self.setInterval("getCurrentChatinfo()",500)
+	})
+	
+	$(document).keypress(function(key) {  
+		if(key.which == 13)  
+			sendMessage(); 
+	}); 
+</script>

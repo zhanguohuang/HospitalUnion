@@ -14,7 +14,7 @@ create table userinfo(
 	id int not null auto_increment,
 	username varchar(50) not null,
 	login_failure_count int default 0,
-	image_url varchar(50),
+	image_url varchar(50) not null default 'image/default.png',
 	ip int,
 	primary key(id,username)
 );
