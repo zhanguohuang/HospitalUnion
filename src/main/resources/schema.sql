@@ -19,6 +19,7 @@ create table userinfo(
 	primary key(id,username)
 );
 
+
 create table limuseinf(
 	username varchar(50) not null,
 	password varchar(50) not null,

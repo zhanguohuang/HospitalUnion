@@ -110,9 +110,11 @@ public class UserController {
 						@RequestParam(value="email",required=false,defaultValue="") String email,
 						@RequestPart(value="userimage",required=false) MultipartFile userimage,
 						HttpServletRequest request) throws Exception{
-		//System.out.println(request.getContextPath());
 		if(!userimage.getOriginalFilename().equals("")){
-			String imagepath = "C:\\development\\workspace\\HospitalUnion\\src\\main\\webapp\\image\\";
+			//本地Eclipse版的Imagepath是被写死的
+			//String imagepath = "C:\\development\\workspace\\HospitalUnion\\src\\main\\webapp\\image\\";
+			//Tomcat版
+			String imagepath = request.getSession().getServletContext().getRealPath("/")+"image\\";
 			String originName = userimage.getOriginalFilename();
 			String fileNameSuffix = originName.substring(originName.indexOf("."),originName.length());
 			//文件的名称保存方式为 id_username_image.jepg如1_zhanguohuang_image.jpg
@@ -122,8 +124,8 @@ public class UserController {
 			Userinfo userinfo = new Userinfo();
 			userinfo.setUsername(username);
 			userinfo.setImage_url(image_url);
-			userinfodao.add(userinfo);
-		}			
+			userinfodao.update(userinfo);
+		}		
 		User user = new User(id, username, password, email);
 		auserdao.update(user);
 		return "redirect:/alluser";

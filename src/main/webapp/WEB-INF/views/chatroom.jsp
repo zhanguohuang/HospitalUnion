@@ -109,6 +109,15 @@
 				<div style="float:left;margin-left:5px"><input type="button" class="btn btn-primary" value="${chatinfo.message}"></div>
 				<br/><br/>
 			</c:if>	
+			
+			<div  class="me" >		
+				<img src="${chatinfo.image_url}" class="img-circle" height="50" width="50">
+				<div class="sentense">
+				      <label class="text-muted time ">${chatinfo.create_time}</label>
+				      <span>${chatinfo.message}</span>
+				 </div>
+			</div>
+			
 			<c:if test="${chatinfo.username eq username}">
 				<div style="float:right"><img src="${chatinfo.image_url}" class="img-circle" height="50" width="50"></div>
 				<div style="height:5;float:right;margin-right:5px"><label class="text-muted">${chatinfo.create_time}</label></div><br/>
