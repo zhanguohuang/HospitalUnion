@@ -9,6 +9,28 @@
 	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
 <title>Welcome come to here!</title>
+
+<style>
+#window{ border: 1px solid #ccc; padding: 15px; height:400px; margin-top:20px;}
+#content{ position: relative; bottom: 0; left: 0;  }
+.fix {*zoom: 1;}
+.fix:after {display: table;content: '';clear: both;}
+.others{ float: left; width:100%;}
+.me{ float:right; width:100%}
+.time{height:5;  font-size: 12px; width: 100%}
+.sentense{width: 88%;}
+.sentense span{text-align:left; display:inline-block; line-height: 20px; margin: 10px 0; border-radius:5px; color: #fff;word-wrap:break-word ;padding:7px; max-width: 801px;}
+
+.others img ,.others .sentense{ float: left;}
+.others  .sentense {margin-left: 5px}
+.others  .sentense span{ background: #339933}
+
+.me img , .me .sentense{ float: right;}
+.me .sentense{ margin-right: 5px;}
+.me  .sentense .time{ width: 100%;text-align: right;}
+.me  .sentense span{  background: #0099CC; float: right; }
+</style>
+
 <script>		
 	function getCurrentChatinfo(){
 		var username = $("#username").val();
@@ -41,11 +63,11 @@
 	
 	function insertleftside(username,message,create_time,image_url){
 		var content = $("#content");
-		var div = $("<div style='float:left'><img src="+image_url+" class='img-circle' height='50' width='50'></div>");
-		content.append(div);
-		div = $("<div style='height:5;float:left;margin-left:5px'><label class='text-muted'>"+create_time+"</label></div><br/>");
-		content.append(div);
-		div = $("<div style='float:left;margin-left:5px'><input type='button' class='btn btn-primary' value="+message+"></div><br/><br/>");
+		var div = $("<div class='me'>"		
+					+"<img src="+image_url+" class='img-circle' height='50' width='50'>"
+					+"<div class='sentense'>"
+		      		+"<label class='text-muted time'>"+create_time+"</label>"
+		      		+"<span>"+message+"</span></div></div>");
 		content.append(div);
 	}
 
@@ -70,11 +92,11 @@
 	function insertrightside(username,message,image_url){
 		var content = $("#content");
 		var create_time = getDate();
-		var div = $("<div style='float:right'><img src="+image_url+" class='img-circle' height='50' width='50'></div>");
-		content.append(div);
-		div = $("<div style='height:5;float:right;margin-right:5px'><label class='text-muted'>"+create_time+"</label></div><br/>");
-		content.append(div);
-		div = $("<div style='float:right;margin-right:5px'><input type='button' class='btn btn-success' value="+message+"></div><br/><br/>");
+		var div = $("<div class='me'>"		
+					+"<img src="+image_url+" class='img-circle' height='50' width='50'>"
+					+"<div class='sentense'>"
+		      		+"<label class='text-muted time'>"+create_time+"</label>"
+		      		+"<span>"+message+"</span></div></div>");
 		content.append(div);
 	}
 	
@@ -100,29 +122,26 @@
 </head>
 <body>
 <div class="container">
-	<div id="window" style="height:400;overflow-x:auto;overflow-y:auto;" class="col-xs-10 btn btn-default">
-		<div id="content" >
+	<div id="window"  class="col-xs-10">
+		<div id="content"  class="fix">
 		<c:forEach items="${chatinfolist}" var="chatinfo">
 			<c:if test="${chatinfo.username ne username}">
-				<div style="float:left"><img src="${chatinfo.image_url}" class="img-circle" height="50" width="50"></div>
-				<div style="height:5;float:left;margin-left:5px"><label class="text-muted">${chatinfo.create_time}</label></div><br/>
-				<div style="float:left;margin-left:5px"><input type="button" class="btn btn-primary" value="${chatinfo.message}"></div>
-				<br/><br/>
-			</c:if>	
-			
-			<div  class="me" >		
-				<img src="${chatinfo.image_url}" class="img-circle" height="50" width="50">
-				<div class="sentense">
-				      <label class="text-muted time ">${chatinfo.create_time}</label>
-				      <span>${chatinfo.message}</span>
-				 </div>
-			</div>
-			
+				<div  class="others" >		
+					<img src="${chatinfo.image_url}" class="img-circle" height="50" width="50">
+					<div class="sentense">
+					      <label class="text-muted time ">${chatinfo.create_time}</label>
+					      <span>${chatinfo.message}</span>
+					</div>
+				</div>
+			</c:if>				
 			<c:if test="${chatinfo.username eq username}">
-				<div style="float:right"><img src="${chatinfo.image_url}" class="img-circle" height="50" width="50"></div>
-				<div style="height:5;float:right;margin-right:5px"><label class="text-muted">${chatinfo.create_time}</label></div><br/>
-				<div style="float:right;margin-right:5px"><input type="button" class="btn btn-success" value="${chatinfo.message}"></div>
-				<br/><br/>
+				<div  class="me" >		
+					<img src="${chatinfo.image_url}" class="img-circle" height="50" width="50">
+					<div class="sentense">
+					      <label class="text-muted time ">${chatinfo.create_time}</label>
+					      <span>${chatinfo.message}</span>
+					</div>
+				</div>
 			</c:if>	
 		</c:forEach>
 		</div>
@@ -143,13 +162,20 @@
 </body>
 </html>
 <script>
-	$(document).ready(function(){
-		scrollToButtom();
-		self.setInterval("getCurrentChatinfo()",500)
-	})
-	
 	$(document).keypress(function(key) {  
 		if(key.which == 13)  
 			sendMessage(); 
 	}); 
+	$(document).ready(function(){
+		var  con_width= $("#content").outerHeight();
+		if(con_width>400){
+		$("#window").css({"overflow-x":"hidden" ,"overflow-y":"scroll"});
+		}else{
+		   $("#window").css("overflow-y","hidden"); 
+		}
+		scrollToButtom();
+		self.setInterval("getCurrentChatinfo()",500)
+	})
+	
+	
 </script>
